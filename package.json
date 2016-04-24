@@ -14,13 +14,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/reactjs/react-tutorial.git"
+    "url": "https://github.com/nfelix/primeNameChecker.git"
   },
   "keywords": [
-    "react",
-    "tutorial",
-    "comment",
-    "example"
+    
   ],
   "author": "petehunt",
   "bugs": {
