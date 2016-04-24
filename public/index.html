@@ -1,22 +1,41 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" class="no-js">
   <head>
-    <meta charset="utf-8">
-    <title>React Tutorial</title>
-    <!-- Not present in the tutorial. Just for basic styling. -->
-    <link rel="stylesheet" href="css/base.css" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+    <title>Prime Number</title>
+    <meta name="description" content="Fullscreen Form Interface: A distraction-free form concept with fancy animations" />
+    <meta name="keywords" content="fullscreen form, css animations, distraction-free, web design" />
+    <meta name="author" content="Codrops" />
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg?v=2">
+    <link rel="stylesheet" type="text/css" href="css/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="css/demo.css" />
+    <link rel="stylesheet" type="text/css" href="css/component.css" />
+    <link rel="stylesheet" type="text/css" href="css/cs-select.css" />
+    <link rel="stylesheet" type="text/css" href="css/cs-skin-boxes.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.0.1/react.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.0.1/react-dom.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.6.16/browser.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.5/marked.min.js"></script>
+    <script src="js/modernizr.custom.js"></script>
   </head>
   <body>
-    <div id="content"></div>
-    <script type="text/babel" src="scripts/example.js"></script>
-    <script type="text/babel">
-      // To get started with this tutorial running your own code, simply remove
-      // the script tag loading scripts/example.js and start writing code here.
-    </script>
+    <div class="container" id="container">
+      <div class="fs-form-wrap" id="fs-form-wrap">
+          <div class="fs-title">
+            <h1>Project Curious</h1>
+          </div>
+          <form id="myform" class="fs-form fs-form-full" autocomplete="off">
+          </form>
+      <script type="text/babel" src="js/prime.js"></script>
+      <script src="js/classie.js"></script>
+            </form><!-- /fs-form -->
+      </div><!-- /fs-form-wrap -->
+    </div><!-- /container -->
+    <script src="js/selectFx.js"></script>
+    <script src="js/fullscreenForm.js"></script> 
+    
   </body>
 </html>
