@@ -79,31 +79,31 @@
 	 */
 	FForm.prototype._init = function() {
 		// the form element
-		this.formEl = this.el.querySelector( 'form' );
+		//this.formEl = this.el.querySelector( 'form' );
 
 		// list of fields
-		this.fieldsList = this.formEl.querySelector( 'ol.fs-fields' );
+		//this.fieldsList = this.formEl.querySelector( 'ol.fs-fields' );
 
 		// current field position
-		this.current = 0;
+		//this.current = 0;
 
 		// all fields
-		this.fields = [].slice.call( this.fieldsList.children );
+		//this.fields = [].slice.call( this.fieldsList.children );
 		
 		// total fields
-		this.fieldsCount = this.fields.length;
+		//this.fieldsCount = this.fields.length;
 		
 		// show first field
-		classie.add( this.fields[ this.current ], 'fs-current' );
+		// classie.add( this.fields[ this.current ], 'fs-current' );
 
 		// create/add controls
-		this._addControls();
+		// this._addControls();
 
 		// create/add messages
-		this._addErrorMsg();
+		// this._addErrorMsg();
 		
 		// init events
-		this._initEvents();
+		//this._initEvents();
 	};
 
 	/**

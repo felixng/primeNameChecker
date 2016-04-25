@@ -1,55 +1,58 @@
-var QuestionLabel = React.createClass({
-  render: function() {
-    return (
-      	<label className="fs-field-label fs-anim-upper" htmlFor="q1">
-        	What is your name?
-    	</label>
-    );
-  }
-});
-
-var QuestionBox = React.createClass({
-  render: function() {
-    return (
-      <input className="fs-anim-lower" id="q1" name="q1" type="text" placeholder="Christopher John Francis Boone" required />
-
-    );
-  }
-});
-
 var QuestionForm = React.createClass({
 	componentDidMount: function() {
-        var formWrap = document.getElementById( 'fs-form-wrap' );
+        
+  },
+  getInitialState: function() {
+    return {name: ''};
+  },
+  handleSubmit: function(e) {
+    e.preventDefault();
 
-        [].slice.call( document.querySelectorAll( 'select.cs-select' ) ).forEach( function(el) {  
-          new SelectFx( el, {
-            stickyPlaceholder: false,
-            onChange: function(val){
-              document.querySelector('span.cs-placeholder').style.backgroundColor = val;
-            }
-          });
-        } );
+    var name = this.state.name.trim();
+    var num = name.toLowerCase().split('')
+            .map(function (char) {
+              return char.charCodeAt(0) - 96;
+            })
+            .reduce(function (current, previous) {
+              return previous + current;
+            });
 
-        new FForm( formWrap, {
-          onReview : function() {
-            classie.add( document.body, 'overview' ); // for demo purposes only
-          }
-        } );
-  	},
-
+    console.log(num);
+  },
+  handleTextChange: function(e) {
+    this.setState({name: e.target.value});
+  },
 	render: function() {
 		return (
-		  <ol className="fs-fields">
-		    <li>
-		      <QuestionLabel />
-		      <QuestionBox />
-		    </li>
-		  </ol>
+      <form id="myform" className="" autoComplete="off" >
+  		  <ol className="fs-fields">
+  		    <li className="fs-current">
+  		      
+            <label className="fs-field-label fs-anim-upper" htmlFor="q1">
+                What is your name?
+            </label>
+
+  		      <input 
+                className="fs-anim-lower" 
+                id="q1" 
+                name="q1" 
+                type="text" 
+                placeholder="Christopher Boone" 
+                value={this.state.name}
+                onChange={this.handleTextChange} 
+            required />
+
+  		    </li>
+  		  </ol>
+        
+        <button className="fs-continue fs-show" onClick={this.handleSubmit}>Continue</button>
+        <span className="fs-message-error"></span>
+      </form>
 		);
 	}
 });
 
 ReactDOM.render(
   <QuestionForm />,
-  document.getElementById('myform')
+  document.getElementById('main')
 );
