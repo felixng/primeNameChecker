@@ -683,7 +683,7 @@ button.fs-continue:hover {
 	width: 70%;
 	color: rgb(242,213,0);
 	font-weight: 700;
-	font-size: 1em;
+	font-size: 0.5em;
 	opacity: 0;
 	-webkit-transform: translate3d(-50%,-5px,0);
 	transform: translate3d(-50%,-5px,0);
@@ -875,7 +875,7 @@ input[type=text]::-ms-clear {
 		left: 0;
 		padding: 0 90px 0 2em;
 		width: 100%;
-		font-size: 1.5em;
+		font-size: 0.75em;
 		-webkit-transform: translate3d(0,-5px,0);
 		transform: translate3d(0,-5px,0);
 	}
