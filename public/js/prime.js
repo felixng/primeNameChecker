@@ -76,7 +76,7 @@ var QuestionForm = React.createClass({
 	}
 });
 
-ReactDOM.render(
-  <QuestionForm />,
-  document.getElementById('main')
-);
+// ReactDOM.render(
+//   <QuestionForm />,
+//   document.getElementById('main')
+// );
