@@ -31,8 +31,8 @@ a {
 	outline: none;
 }
 
-a:hover, a:focus {
-	color: #fff;
+a:hover, a:active {
+	color: rgba(242,213,0, 0.7);
 }
 
 /* Title */

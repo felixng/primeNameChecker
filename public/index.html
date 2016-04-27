@@ -27,41 +27,55 @@
             <h1>Project Curious</h1>
           </div>
 
-          <div id="main" class="fs-form fs-form-full">
-          </div>
-          <div class="main clearfix">
-          <form id="nl-form" class="nl-form">
-            I feel to eat 
-            <select>
-              <option value="1" selected>any food</option>
-              <option value="2">Indian</option>
-              <option value="3">French</option>
-              <option value="4">Japanese</option>
-              <option value="2">Italian</option>
-            </select>
-            <br />in a
-            <select>
-              <option value="1" selected>standard</option>
-              <option value="2">fancy</option>
-              <option value="3">hip</option>
-              <option value="4">traditional</option>
-              <option value="2">romantic</option>
-            </select>
-            restaurant
-            <br />at 
-            <select>
-              <option value="1" selected>anytime</option>
-              <option value="1">7 p.m.</option>
-              <option value="2">8 p.m.</option>
-              <option value="3">9 p.m.</option>
-            </select>
-            in <input type="text" value="" placeholder="any city" data-subline="For example: <em>Los Angeles</em> or <em>New York</em>"/>
-            <div class="nl-submit-wrap">
-              <button class="nl-submit" type="submit">Find a restaurant</button>
-            </div>
-            <div class="nl-overlay"></div>
-          </form>
-        </div><!-- /main -->
+          <!-- <div id="main" class="fs-form fs-form-full">
+          </div> -->
+          <div class="main clearfix" id="main">
+            <form id="nl-form" class="nl-form">
+              My name is Felix. I feel to eat 
+              <select>
+                <option value="1" selected>any food</option>
+                <option value="2">Indian</option>
+                <option value="3">French</option>
+                <option value="4">Japanese</option>
+                <option value="2">Italian</option>
+              </select>
+              <br />in a
+              <select>
+                <option value="1" selected>standard</option>
+                <option value="2">fancy</option>
+                <option value="3">hip</option>
+                <option value="4">traditional</option>
+                <option value="2">romantic</option>
+              </select>
+              restaurant
+              <br />at 
+              <select>
+                <option value="1" selected>anytime</option>
+                <option value="1">7 p.m.</option>
+                <option value="2">8 p.m.</option>
+                <option value="3">9 p.m.</option>
+              </select>
+              in 
+              <div class="nl-field nl-ti-text">
+                <a class="nl-field-toggle">any city</a>
+                <ul>
+                  <li class="nl-ti-input">
+                    <input type="text" placeholder="any city">
+                    <button class="nl-field-go">Go</button>
+                  </li>
+                  <li class="nl-ti-example">For example: <em>Los Angeles</em> or <em>New York</em>
+                  </li>
+                </ul>
+              </div>
+              
+              <input style="display:none;" type="text" value="" placeholder="any city" data-subline="For example: <em>Los Angeles</em> or <em>New York</em>"/>
+
+              <div class="nl-submit-wrap">
+                <button class="nl-submit" type="submit">Find a restaurant</button>
+              </div>
+              
+            </form>
+          </div><!-- /main -->
       </div><!-- /fs-form-wrap -->
     </div><!-- /container -->
     <script src="js/nlForm.js"></script>
