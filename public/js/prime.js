@@ -7,7 +7,18 @@ var FreeTextBox = React.createClass({
     // this.inputsubmit.addEventListener( 'touchstart', function( ev ) { ev.preventDefault(); self.close(); } );    
   },
   getInitialState: function() {
-    return { value: '', toggleClass: 'nl-field-toggle',  open: false};
+    return { value: '', toggleClass: 'nl-field nl-ti-text', displayText: this.props.displayText};
+  },
+  componentWillReceiveProps: function(nextProps){
+    if (nextProps.open){
+      this.setState({ toggleClass: 'nl-field nl-ti-text nl-field-open'}); 
+    }
+    else{
+      this.setState({ toggleClass: 'nl-field nl-ti-text'});
+      if (this.state.value.trim() != ''){
+        this.setState({displayText: this.state.value});
+      }
+    }
   },
   handleChange: function(e) {
     this.setState({value: e.target.value});
@@ -17,28 +28,22 @@ var FreeTextBox = React.createClass({
   },
   handleToggle: function(e){
     e.preventDefault(); e.stopPropagation(); 
-    if( this.state.open ) {
-      return false;
-    };
-    //this.setState{ open: true };
-    //this.form.fldOpen = this.pos;
-    //var self = this;
-    
+    this.setState({ toggleClass: 'nl-field nl-ti-text nl-field-open'});
   },
   render: function() {
     return (
-      <div className="nl-field nl-ti-text">
-        <a className="nl-field-toggle " className={this.state.toggleClass} onClick={this.handleToggle}>{this.props.displayText}</a>
+      <div className="nl-field nl-ti-text" className={this.state.toggleClass}>
+        <a className="nl-field-toggle " onClick={this.handleToggle}>{this.state.displayText}</a>
         <ul>
           <li className="nl-ti-input">
             <input type="text" 
                     placeholder={this.props.displayText} 
-                    value={this.state.name} 
+                    value={this.state.value} 
                     onCLick={this.handleSubmit}
                     onChange={this.handleChange} />
             <button className="nl-field-go">Go</button>
           </li>
-          <li className="nl-ti-example">For example: <em>{this.props.exampleText}</em> //<em>Los Angeles</em> or <em>New York</em>
+          <li className="nl-ti-example">For example: <em>{this.props.exampleText}</em> 
           </li>
         </ul>
       </div>
@@ -47,17 +52,29 @@ var FreeTextBox = React.createClass({
 });
 
 var NLForm = React.createClass({
+  getInitialState: function() {
+    return { open: false };
+  },
+  overlayClick: function(e) {
+    this.setState({open: false});
+  },
   render: function() {
     return (
       <form id="nl-form" className="nl-form">
-        My name is <FreeTextBox displayText='Christopher' exampleText='Christopher Boone'/>.
-        I live in <FreeTextBox displayText='somewhere in UK' exampleText='London, or New York'/>.
-        And you can reach me at <FreeTextBox displayText='detective@boone.com' exampleText='Christopher Boone'/>.
+        My name is <FreeTextBox open={this.state.open} 
+                     displayText='Christopher' 
+                     exampleText='Christopher Boone'/>.
+        I live in <FreeTextBox open={this.state.open} 
+                     displayText='somewhere in UK' 
+                     exampleText='London, or New York'/>.
+        And you can reach me at <FreeTextBox open={this.state.open} 
+                     displayText='detective@boone.com' 
+                     exampleText='Christopher Boone'/>.
         
         <div className="nl-submit-wrap">
           <button className="nl-submit" type="submit">Is my name a Prime Number?</button>
         </div>
-        <div className="nl-overlay"></div>
+        <div className="nl-overlay" onClick={this.overlayClick}></div>
       </form>
     );
   }
