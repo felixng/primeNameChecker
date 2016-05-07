@@ -160,6 +160,7 @@
 	width: 1.8em;
 	text-align: center;
 	color: transparent;
+	outline: none;
 }
 
 .nl-field-go:before {
