@@ -3,12 +3,35 @@
 // ****
 var Intro = React.createClass({
   getInitialState: function() {
-    return { };
+    return {  };
   },
+  
   render: function() {
     return (
         <div>
             Hello, my name is Christopher John Francis Boone.  I am fifteen-year-old.  I am from Swindon, England.
+        </div>
+    );
+  }
+});
+
+var Result = React.createClass({
+  getInitialState: function() {
+    return { prime: '' };
+  },
+  componentDidMount: function(){
+    if (!this.props.isPrime){
+      this.setState({prime: 'not '});
+    }
+    else{
+      this.setState({prime: ''});
+    }
+  },
+  render: function() {
+    return (
+        <div>
+            {this.props.name} equals to {this.props.number}.<br/> 
+            You are <span className="highlight">{this.state.prime}</span>a prime number!
         </div>
     );
   }
@@ -73,9 +96,13 @@ var FreeTextBox = React.createClass({
 var NLForm = React.createClass({
   componentDidMount: function() {
     window.addEventListener('keyup', this.keyDown);
+    setTimeout(this.nextStage, 1000);
   },
   getInitialState: function() {
-    return { open: false };
+    return { open: false, stage: 0, isPrime: false, number: 0, name: '' };
+  },
+  nextStage: function() {
+    this.setState({ stage: this.state.stage + 1 });
   },
   closeOverlay: function(e) {
     this.setState({open: false});
@@ -99,15 +126,17 @@ var NLForm = React.createClass({
   handleSubmit: function(e){
     e.preventDefault(); e.stopPropagation(); 
     var name = this.refs['name'].getInputValue();
-    var resultNumber = this.calcNumber(name);
-    console.log(resultNumber);
+    var resultNumber = this.calcNumber(name.replace(' ', ''));
+    
+    this.setState({name: name});
     if (resultNumber != undefined && resultNumber % 2 !== 0){
-      console.log('Prime');
+      this.setState({isPrime: true, number: resultNumber});
     }
     else{
-      console.log('Not Prime');
+      this.setState({isPrime: false, number: resultNumber});
     }
 
+    this.nextStage();
   },
   handleChange: function(val){
     this.setState({open: val});
@@ -126,28 +155,36 @@ var NLForm = React.createClass({
   },
   render: function() {
     return (
-      <form id="nl-form" className="nl-form">
-        <div >
-        My name is <FreeTextBox ref="name" 
-                     open={this.state.open} 
-                     onUpdate={this.handleChange}
-                     displayText='Christopher' 
-                     exampleText='Christopher Boone'/>.
-        I live in <FreeTextBox open={this.state.open} 
-                     onUpdate={this.handleChange}
-                     displayText='somewhere in UK' 
-                     exampleText='London, or New York'/>.
-        And you can reach me at <FreeTextBox open={this.state.open} 
-                     onUpdate={this.handleChange}  
-                     displayText='detective@boone.com' 
-                     exampleText='Christopher Boone'/>.
-        
-        <div className="nl-submit-wrap">
-          <button className="nl-submit" type="submit" onClick={this.handleSubmit}>Is my name a Prime Number?</button>
-        </div>
-        <div className="nl-overlay" onClick={this.closeOverlay}></div>
-        </div>
-      </form>
+      <div>
+        <form id="nl-form" className="nl-form">
+          { this.state.stage == 0 ? <Intro className="fadeOutUp" /> : null }
+          { this.state.stage == 1 ? 
+            <div id="details">
+              My name is <FreeTextBox ref="name" 
+                           open={this.state.open} 
+                           onUpdate={this.handleChange}
+                           displayText='Christopher' 
+                           exampleText='Christopher Boone'/>.
+              I live in <FreeTextBox open={this.state.open} 
+                           onUpdate={this.handleChange}
+                           displayText='somewhere in UK' 
+                           exampleText='London, or New York'/>.
+              And you can reach me at <FreeTextBox open={this.state.open} 
+                           onUpdate={this.handleChange}  
+                           displayText='detective@boone.com' 
+                           exampleText='Christopher Boone'/>.
+              
+              <div className="nl-submit-wrap">
+                <button className="nl-submit" type="submit" onClick={this.handleSubmit}>Is my name a Prime Number?</button>
+              </div>
+              <div className="nl-overlay" onClick={this.closeOverlay}></div>
+            </div>
+             : null }
+          { this.state.stage == 2 ? <Result name={this.state.name} 
+                                            isPrime={this.state.isPrime} 
+                                            number={this.state.number} /> : null }
+        </form>
+      </div>
     );
   }
 });
