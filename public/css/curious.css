@@ -49,6 +49,10 @@ a:hover, a:active {
 	margin: 0;
 }
 
+.fs-title h1 a {
+	color: rgba(242,213,0, 0.8);
+}
+
 /* Header Style */
 .main,
 .container > header {
