@@ -15,6 +15,20 @@ var Intro = React.createClass({
   }
 });
 
+var Error = React.createClass({
+  getInitialState: function() {
+    return {  };
+  },
+  
+  render: function() {
+    return (
+        <div className="errorMessage">
+            I cannot perform the calculation without your name.
+        </div>
+    );
+  }
+});
+
 var Result = React.createClass({
   getInitialState: function() {
     return { prime: '' };
@@ -30,8 +44,8 @@ var Result = React.createClass({
   render: function() {
     return (
         <div>
-            {this.props.name} equals to {this.props.number}.<br/> 
-            You are <span className="highlight">{this.state.prime}</span>a prime number!
+            <span className="highlight">{this.props.name}</span> equals to {this.props.number}.<br/> 
+            Your name  <span className="highlight">is {this.state.prime}</span>a prime number!
         </div>
     );
   }
@@ -102,6 +116,7 @@ var NLForm = React.createClass({
     return { open: false, stage: 0, isPrime: false, number: 0, name: '' };
   },
   nextStage: function() {
+    this.setState({error: false});
     this.setState({ stage: this.state.stage + 1 });
   },
   closeOverlay: function(e) {
@@ -126,17 +141,23 @@ var NLForm = React.createClass({
   handleSubmit: function(e){
     e.preventDefault(); e.stopPropagation(); 
     var name = this.refs['name'].getInputValue();
-    var resultNumber = this.calcNumber(name.replace(' ', ''));
-    
-    this.setState({name: name});
-    if (resultNumber != undefined && resultNumber % 2 !== 0){
-      this.setState({isPrime: true, number: resultNumber});
-    }
-    else{
-      this.setState({isPrime: false, number: resultNumber});
-    }
+    if (name != '')
+    {
+      var resultNumber = this.calcNumber(name.replace(' ', ''));
+      
+      this.setState({name: name});
+      if (resultNumber != undefined && resultNumber % 2 !== 0){
+        this.setState({isPrime: true, number: resultNumber});
+      }
+      else{
+        this.setState({isPrime: false, number: resultNumber});
+      }
 
-    this.nextStage();
+      this.nextStage();
+    }
+    else {
+      this.setState({error: true});
+    }
   },
   handleChange: function(val){
     this.setState({open: val});
@@ -157,7 +178,8 @@ var NLForm = React.createClass({
     return (
       <div>
         <form id="nl-form" className="nl-form">
-          { this.state.stage == 0 ? <Intro className="fadeOutUp" /> : null }
+          { this.state.stage == 0 ? <Intro /> : null }
+          { this.state.error ? <Error /> : null }
           { this.state.stage == 1 ? 
             <div id="details">
               My name is <FreeTextBox ref="name" 
