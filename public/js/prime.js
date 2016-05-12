@@ -1,6 +1,6 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
-
+var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
 
 // ****
 // Natural Language Form
@@ -205,33 +205,48 @@ var NLForm = React.createClass({
 
           <div className="main clearfix" id="main">
             <form id="nl-form" className="nl-form">
-              { this.state.stage == 0 ? <Intro /> : null }
-              { this.state.error ? <Error /> : null }
+              { this.state.stage == 0 ? 
+                  <ReactCSSTransitionGroup transitionName="fade" transitionAppear={true} transitionAppearTimeout={500} transitionEnterTimeout={500} transitionLeaveTimeout={500}>
+                    <Intro /> 
+                  </ReactCSSTransitionGroup>
+                  : null }
+              { this.state.error ? 
+                <ReactCSSTransitionGroup transitionName="fade" transitionAppear={true} transitionAppearTimeout={500} transitionEnterTimeout={500} transitionLeaveTimeout={500}>
+                    <Error /> 
+                  </ReactCSSTransitionGroup>
+                : null }
               { this.state.stage == 1 ? 
-                <div id="details">
-                  My name is <FreeTextBox ref="name" 
-                               open={this.state.open} 
-                               onUpdate={this.handleChange}
-                               displayText='Christopher' 
-                               exampleText='Christopher Boone'/>.
-                  I live in <FreeTextBox open={this.state.open} 
-                               onUpdate={this.handleChange}
-                               displayText='somewhere in UK' 
-                               exampleText='London, or New York'/>.
-                  And you can reach me at <FreeTextBox open={this.state.open} 
-                               onUpdate={this.handleChange}  
-                               displayText='detective@boone.com' 
-                               exampleText='Christopher Boone'/>.
-                  
-                  <div className="nl-submit-wrap">
-                    <button className="nl-submit" type="submit" onClick={this.handleSubmit}>Is my name a Prime Number?</button>
-                  </div>
-                  <div className="nl-overlay" onClick={this.closeOverlay}></div>
-                </div>
+                <ReactCSSTransitionGroup transitionName="fade" transitionAppear={true} transitionAppearTimeout={500} transitionEnterTimeout={500} transitionLeaveTimeout={500}>
+                    <div id="details">
+                      My name is <FreeTextBox ref="name" 
+                                   open={this.state.open} 
+                                   onUpdate={this.handleChange}
+                                   displayText='Christopher' 
+                                   exampleText='Christopher Boone'/>.
+                      I live in <FreeTextBox open={this.state.open} 
+                                   onUpdate={this.handleChange}
+                                   displayText='somewhere in UK' 
+                                   exampleText='London, or New York'/>.
+                      And you can reach me at <FreeTextBox open={this.state.open} 
+                                   onUpdate={this.handleChange}  
+                                   displayText='detective@boone.com' 
+                                   exampleText='Christopher Boone'/>.
+                      
+                      <div className="nl-submit-wrap">
+                        <button className="nl-submit" type="submit" onClick={this.handleSubmit}>Is my name a Prime Number?</button>
+                      </div>
+                      <div className="nl-overlay" onClick={this.closeOverlay}></div>
+                    </div>
+                  </ReactCSSTransitionGroup>
+                
                  : null }
-              { this.state.stage == 2 ? <Result name={this.state.name} 
-                                                isPrime={this.state.isPrime} 
-                                                number={this.state.number} /> : null }
+              { this.state.stage == 2 ? 
+                <ReactCSSTransitionGroup transitionName="fade" transitionAppear={true} transitionAppearTimeout={500} transitionEnterTimeout={500} transitionLeaveTimeout={500}>
+                    <Result name={this.state.name} 
+                    isPrime={this.state.isPrime} 
+                    number={this.state.number} /> 
+                </ReactCSSTransitionGroup>
+              : null }
             </form>
           </div>
       </div>
