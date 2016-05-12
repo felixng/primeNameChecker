@@ -60,7 +60,6 @@ var FreeTextBox = React.createClass({
     return { value: '', toggleClass: 'nl-field nl-ti-text', displayText: this.props.displayText};
   },
   componentWillReceiveProps: function(nextProps){
-    console.log('componentWillReceiveProps');
     if (!nextProps.open){
       this.setState({ toggleClass: 'nl-field nl-ti-text'});
       this.updateValue();
@@ -145,9 +144,27 @@ var NLForm = React.createClass({
       // }
     }
   },
+  subscribe: function(email){
+    console.log(email);
+    $.ajax({
+      url: this.props.url,
+      dataType: 'json',
+      type: 'POST',
+      data: email,
+      success: function(data) {
+        console.log('success!');
+      }.bind(this),
+      error: function(xhr, status, err) {
+        console.error(this.props.url, status, err.toString());
+      }.bind(this)
+    });
+
+    console.log('done');
+  },
   handleSubmit: function(e){
     e.preventDefault(); e.stopPropagation(); 
     var name = this.refs['name'].getInputValue();
+    var email = this.refs['email'].getInputValue();
     if (name != '')
     {
       var resultNumber = this.calcNumber(name.replace(' ', ''));
@@ -159,7 +176,7 @@ var NLForm = React.createClass({
       else{
         this.setState({isPrime: false, number: resultNumber});
       }
-
+      this.subscribe(email);
       this.nextStage();
     }
     else {
@@ -172,7 +189,6 @@ var NLForm = React.createClass({
       this.lastStage();
     }
   },
-
   handleChange: function(val){
     this.setState({open: val});
   },
@@ -223,14 +239,16 @@ var NLForm = React.createClass({
                                    onUpdate={this.handleChange}
                                    displayText='Christopher' 
                                    exampleText='Christopher Boone'/>.
-                      I live in <FreeTextBox open={this.state.open} 
+                      I live in <FreeTextBox ref="location" 
+                                   open={this.state.open} 
                                    onUpdate={this.handleChange}
                                    displayText='somewhere in UK' 
                                    exampleText='London, or New York'/>.
-                      And you can reach me at <FreeTextBox open={this.state.open} 
-                                   onUpdate={this.handleChange}  
-                                   displayText='detective@boone.com' 
-                                   exampleText='Christopher Boone'/>.
+                      And you can reach me at <FreeTextBox ref="email" 
+                                                 open={this.state.open} 
+                                                 onUpdate={this.handleChange}  
+                                                 displayText='detective@boone.com' 
+                                                 exampleText='Christopher Boone'/>.
                       
                       <div className="nl-submit-wrap">
                         <button className="nl-submit" type="submit" onClick={this.handleSubmit}>Is my name a Prime Number?</button>
@@ -255,7 +273,7 @@ var NLForm = React.createClass({
 });
 
 ReactDOM.render(
-  <NLForm/>,
+  <NLForm url="/api/subscribe"/>,
   document.getElementById('container')
 );
 

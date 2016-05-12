@@ -52,7 +52,7 @@ a:hover, a:active {
 	top: 0;
 	left: 0;
 	margin: 0;
-	padding: 40px;
+	padding: 2.25em;
 	width: 100%;
 }
 
@@ -70,7 +70,7 @@ a:hover, a:active {
 .main,
 .container > header {
 	margin: 0 auto;
-	padding: 2em;
+	padding: 2.25em;
 }
 
 .container > header {

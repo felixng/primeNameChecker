@@ -14,6 +14,7 @@ var fs = require('fs');
 var path = require('path');
 var express = require('express');
 var bodyParser = require('body-parser');
+var MongoClient = require('mongodb').MongoClient;
 var app = express();
 
 var COMMENTS_FILE = path.join(__dirname, 'comments.json');
@@ -41,7 +42,21 @@ app.get('/name/*', function(req, res) {
 });
 
 
+app.post('/api/subscribe', function(req, res) {
+  MongoClient.connect('mongodb://curiousChris:JohnFrancisBoone@ds019482.mlab.com:19482/curious-incident', function(err, db) {
+    if (err) {
+      throw err;
+    }
+
+    var collection = db.collection('test')
+    collection.insert(req.body, function(err, result) {
+      if (err) {
+        throw err;
+      } 
+    });
+  });
+});
+
 app.listen(app.get('port'), function() {
   console.log('Server started: http://localhost:' + app.get('port') + '/');
-  console.log(process.env.NODE_ENV);
 });

@@ -128,7 +128,6 @@
 	    return { value: '', toggleClass: 'nl-field nl-ti-text', displayText: this.props.displayText };
 	  },
 	  componentWillReceiveProps: function (nextProps) {
-	    console.log('componentWillReceiveProps');
 	    if (!nextProps.open) {
 	      this.setState({ toggleClass: 'nl-field nl-ti-text' });
 	      this.updateValue();
@@ -233,9 +232,27 @@
 	        // }
 	      }
 	  },
+	  subscribe: function (email) {
+	    console.log(email);
+	    $.ajax({
+	      url: this.props.url,
+	      dataType: 'json',
+	      type: 'POST',
+	      data: email,
+	      success: function (data) {
+	        console.log('success!');
+	      }.bind(this),
+	      error: function (xhr, status, err) {
+	        console.error(this.props.url, status, err.toString());
+	      }.bind(this)
+	    });
+
+	    console.log('done');
+	  },
 	  handleSubmit: function (e) {
 	    e.preventDefault();e.stopPropagation();
 	    var name = this.refs['name'].getInputValue();
+	    var email = this.refs['email'].getInputValue();
 	    if (name != '') {
 	      var resultNumber = this.calcNumber(name.replace(' ', ''));
 
@@ -245,7 +262,7 @@
 	      } else {
 	        this.setState({ isPrime: false, number: resultNumber });
 	      }
-
+	      this.subscribe(email);
 	      this.nextStage();
 	    } else {
 	      this.setState({ error: true });
@@ -257,7 +274,6 @@
 	      this.lastStage();
 	    }
 	  },
-
 	  handleChange: function (val) {
 	    this.setState({ open: val });
 	  },
@@ -339,12 +355,14 @@
 	                displayText: 'Christopher',
 	                exampleText: 'Christopher Boone' }),
 	              '. I live in ',
-	              React.createElement(FreeTextBox, { open: this.state.open,
+	              React.createElement(FreeTextBox, { ref: 'location',
+	                open: this.state.open,
 	                onUpdate: this.handleChange,
 	                displayText: 'somewhere in UK',
 	                exampleText: 'London, or New York' }),
 	              '. And you can reach me at ',
-	              React.createElement(FreeTextBox, { open: this.state.open,
+	              React.createElement(FreeTextBox, { ref: 'email',
+	                open: this.state.open,
 	                onUpdate: this.handleChange,
 	                displayText: 'detective@boone.com',
 	                exampleText: 'Christopher Boone' }),
@@ -374,7 +392,7 @@
 	  }
 	});
 
-	ReactDOM.render(React.createElement(NLForm, null), document.getElementById('container'));
+	ReactDOM.render(React.createElement(NLForm, { url: '/api/subscribe' }), document.getElementById('container'));
 
 	// ****
 	// Single Question
