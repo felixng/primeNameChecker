@@ -43,7 +43,7 @@ app.get('/name/*', function(req, res) {
 
 
 app.post('/api/subscribe', function(req, res) {
-  MongoClient.connect('mongodb://curiousChris:JohnFrancisBoone@ds019482.mlab.com:19482/curious-incident', function(err, db) {
+  MongoClient.connect(process.env.MONGODB_URI, function(err, db) {
     if (err) {
       throw err;
     }
@@ -59,4 +59,5 @@ app.post('/api/subscribe', function(req, res) {
 
 app.listen(app.get('port'), function() {
   console.log('Server started: http://localhost:' + app.get('port') + '/');
+  console.log(process.env.MONGODB_URI);
 });
