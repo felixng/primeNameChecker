@@ -119,6 +119,9 @@ var NLForm = React.createClass({
     this.setState({error: false});
     this.setState({ stage: this.state.stage + 1 });
   },
+  lastStage: function() {
+    this.setState({ stage: this.state.stage - 1 });
+  },
   closeOverlay: function(e) {
     this.setState({open: false});
   },
@@ -159,6 +162,13 @@ var NLForm = React.createClass({
       this.setState({error: true});
     }
   },
+  back: function(e){
+    e.preventDefault(); e.stopPropagation(); 
+    if (this.state.stage > 0){
+      this.lastStage();
+    }
+  },
+
   handleChange: function(val){
     this.setState({open: val});
   },
@@ -176,36 +186,50 @@ var NLForm = React.createClass({
   },
   render: function() {
     return (
-      <div>
-        <form id="nl-form" className="nl-form">
-          { this.state.stage == 0 ? <Intro /> : null }
-          { this.state.error ? <Error /> : null }
-          { this.state.stage == 1 ? 
-            <div id="details">
-              My name is <FreeTextBox ref="name" 
-                           open={this.state.open} 
-                           onUpdate={this.handleChange}
-                           displayText='Christopher' 
-                           exampleText='Christopher Boone'/>.
-              I live in <FreeTextBox open={this.state.open} 
-                           onUpdate={this.handleChange}
-                           displayText='somewhere in UK' 
-                           exampleText='London, or New York'/>.
-              And you can reach me at <FreeTextBox open={this.state.open} 
-                           onUpdate={this.handleChange}  
-                           displayText='detective@boone.com' 
-                           exampleText='Christopher Boone'/>.
-              
-              <div className="nl-submit-wrap">
-                <button className="nl-submit" type="submit" onClick={this.handleSubmit}>Is my name a Prime Number?</button>
-              </div>
-              <div className="nl-overlay" onClick={this.closeOverlay}></div>
+      <div className="fs-form-wrap" id="fs-form-wrap">
+          <div className="fs-title">
+            <h1><a href="/">Project Curious</a></h1>
+            <div className="codrops-top">
+              { this.state.stage != 0 ? 
+                <a className="codrops-icon codrops-icon-prev" onClick={this.back}><span>Back</span></a>
+                : null }
+              { this.state.stage == 0 ? 
+                <a className="codrops-icon codrops-icon-next" onClick={this.nextStage}><span>Next</span></a>
+                : null }
             </div>
-             : null }
-          { this.state.stage == 2 ? <Result name={this.state.name} 
-                                            isPrime={this.state.isPrime} 
-                                            number={this.state.number} /> : null }
-        </form>
+          </div>
+
+          <div className="main clearfix" id="main">
+            <form id="nl-form" className="nl-form">
+              { this.state.stage == 0 ? <Intro /> : null }
+              { this.state.error ? <Error /> : null }
+              { this.state.stage == 1 ? 
+                <div id="details">
+                  My name is <FreeTextBox ref="name" 
+                               open={this.state.open} 
+                               onUpdate={this.handleChange}
+                               displayText='Christopher' 
+                               exampleText='Christopher Boone'/>.
+                  I live in <FreeTextBox open={this.state.open} 
+                               onUpdate={this.handleChange}
+                               displayText='somewhere in UK' 
+                               exampleText='London, or New York'/>.
+                  And you can reach me at <FreeTextBox open={this.state.open} 
+                               onUpdate={this.handleChange}  
+                               displayText='detective@boone.com' 
+                               exampleText='Christopher Boone'/>.
+                  
+                  <div className="nl-submit-wrap">
+                    <button className="nl-submit" type="submit" onClick={this.handleSubmit}>Is my name a Prime Number?</button>
+                  </div>
+                  <div className="nl-overlay" onClick={this.closeOverlay}></div>
+                </div>
+                 : null }
+              { this.state.stage == 2 ? <Result name={this.state.name} 
+                                                isPrime={this.state.isPrime} 
+                                                number={this.state.number} /> : null }
+            </form>
+          </div>
       </div>
     );
   }
@@ -213,7 +237,7 @@ var NLForm = React.createClass({
 
 ReactDOM.render(
   <NLForm/>,
-  document.getElementById('main')
+  document.getElementById('container')
 );
 
 
