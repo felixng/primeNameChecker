@@ -114,7 +114,7 @@ var FreeTextBox = React.createClass({
 var NLForm = React.createClass({
   componentDidMount: function() {
     window.addEventListener('keyup', this.keyDown);
-    setTimeout(this.nextStage, 1000);
+    setTimeout(this.nextStage, 3000);
   },
   getInitialState: function() {
     return { open: false, stage: 0, isPrime: false, number: 0, name: '' };
