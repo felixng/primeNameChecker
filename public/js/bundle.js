@@ -232,13 +232,13 @@
 	        // }
 	      }
 	  },
-	  subscribe: function (email) {
-	    console.log(email);
+	  subscribe: function (formData) {
+	    console.log(formData);
 	    $.ajax({
 	      url: this.props.url,
 	      dataType: 'json',
 	      type: 'POST',
-	      data: email,
+	      data: formData,
 	      success: function (data) {
 	        console.log('success!');
 	      }.bind(this),
@@ -252,6 +252,7 @@
 	  handleSubmit: function (e) {
 	    e.preventDefault();e.stopPropagation();
 	    var name = this.refs['name'].getInputValue();
+	    var location = this.refs['location'].getInputValue();
 	    var email = this.refs['email'].getInputValue();
 	    if (name != '') {
 	      var resultNumber = this.calcNumber(name.replace(' ', ''));
@@ -262,7 +263,7 @@
 	      } else {
 	        this.setState({ isPrime: false, number: resultNumber });
 	      }
-	      this.subscribe(email);
+	      this.subscribe({ name: name, location: location, email: email });
 	      this.nextStage();
 	    } else {
 	      this.setState({ error: true });

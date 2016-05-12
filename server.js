@@ -47,7 +47,7 @@ app.post('/api/subscribe', function(req, res) {
     if (err) {
       throw err;
     }
-
+    console.log(req.body);
     var collection = db.collection('test')
     collection.insert(req.body, function(err, result) {
       if (err) {
