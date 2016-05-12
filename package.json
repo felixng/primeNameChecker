@@ -4,6 +4,8 @@
   "description": "Project Curious",
   "main": "server.js",
   "dependencies": {
+    "babel-core": "^6.8.0",
+    "babel-loader": "^6.2.4",
     "babel-preset-react": "^6.5.0",
     "babelify": "^7.3.0",
     "body-parser": "^1.4.3",
@@ -12,10 +14,12 @@
     "react-dom": "^15.0.2"
   },
   "devDependencies": {
-    "gulp": "^3.9.1"
+    "gulp": "^3.9.1",
+    "webpack": "^1.12.12"
   },
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "build": "webpack public/js/prime.js public/js/bundle.js --module-bind 'js=babel-loader'"
   },
   "repository": {
     "type": "git",
@@ -26,5 +30,8 @@
   "homepage": "https://github.com/nfelix/primeNameChecker",
   "engines": {
     "node": "0.12.x"
+  },
+  "babel": {
+    "presets": ["react"] 
   }
 }

@@ -1,3 +1,7 @@
+var React = require('react');
+var ReactDOM = require('react-dom');
+
+
 // ****
 // Natural Language Form
 // ****
