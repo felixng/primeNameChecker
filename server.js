@@ -91,10 +91,12 @@ addToEmailList = function(name, email){
                       double_optin: false, 
                       send_welcome: false, 
                       update_existing: true }, function (error, data) {
-    if (error)
-        console.log(error.message);
-    else
-        //console.log(JSON.stringify(data)); 
+    if (error){
+      console.log(error.message);
+    }
+    else{
+      //console.log(JSON.stringify(data)); 
+    }
   });
 
 }
