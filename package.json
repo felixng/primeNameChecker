@@ -10,6 +10,7 @@
     "babelify": "^7.3.0",
     "body-parser": "^1.4.3",
     "express": "^4.4.5",
+    "mailchimp": "^1.1.6",
     "mongodb": "^2.1.18",
     "react": "^15.0.2",
     "react-dom": "^15.0.2"

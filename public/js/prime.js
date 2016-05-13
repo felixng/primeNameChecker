@@ -145,19 +145,20 @@ var NLForm = React.createClass({
     }
   },
   subscribe: function(formData){
-    $.ajax({
-      url: this.props.url,
-      dataType: 'json',
-      type: 'POST',
-      data: formData,
-      success: function(data) {
-        console.log('success!');
-      }.bind(this),
-      error: function(xhr, status, err) {
-        console.error(this.props.url, status, err.toString());
-      }.bind(this)
-    });
-
+    if (formData){
+      $.ajax({
+        url: this.props.url,
+        dataType: 'json',
+        type: 'POST',
+        data: formData,
+        success: function(data) {
+          console.log('success!');
+        }.bind(this),
+        error: function(xhr, status, err) {
+          console.error(this.props.url, status, err.toString());
+        }.bind(this)
+      });  
+    }
   },
   handleSubmit: function(e){
     e.preventDefault(); e.stopPropagation(); 

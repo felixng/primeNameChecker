@@ -17,6 +17,15 @@ var bodyParser = require('body-parser');
 var MongoClient = require('mongodb').MongoClient;
 var app = express();
 
+//MailChimp
+var MailChimpAPI = require('mailchimp').MailChimpAPI;
+var apiKey = process.env.MAILCHIMP_API;
+try {
+    var api = new MailChimpAPI(apiKey, { version : '1.3' });
+} catch (error) {
+    console.log(error.message);
+}
+
 var COMMENTS_FILE = path.join(__dirname, 'comments.json');
 
 app.set('port', (process.env.PORT || 3000));
@@ -31,7 +40,7 @@ app.use(function(req, res, next) {
     // an API server in conjunction with something like webpack-dev-server.
     res.setHeader('Access-Control-Allow-Origin', '*');
 
-    // Disable caching so we'll always get the latest comments.
+    // Disable caching so we'll always get the latest.
     res.setHeader('Cache-Control', 'no-cache');
     next();
 });
@@ -47,19 +56,47 @@ app.post('/api/subscribe', function(req, res) {
     if (err) {
       throw err;
     }
+    
     console.log(req.body);
+    
     var collection = db.collection('curiosity')
     collection.insert(req.body, function(err, result) {
-      addToEmailList(req.body.date, req.body.date);
+      
+      addToEmailList(req.body.name, req.body.email);
+      
       if (err) {
         throw err;
-      } 
+      }
+
     });
   });
 });
 
 addToEmailList = function(name, email){
-  console.log(name);
+  // api.lists({}, function (error, data) {
+  //     if (error)
+  //         console.log(error.message);
+  //     else
+  //         console.log(JSON.stringify(data)); // Do something with your data!
+  // });
+
+  var merge_vars = {
+      EMAIL: email,
+      FNAME: name
+  };
+
+  api.listSubscribe({ id : process.env.MAILCHIMP_LIST_ID, 
+                      email_address : email, 
+                      merge_vars : merge_vars, 
+                      double_optin: false, 
+                      send_welcome: false, 
+                      update_existing: true }, function (error, data) {
+    if (error)
+        console.log(error.message);
+    else
+        console.log(JSON.stringify(data)); 
+  });
+
 }
 
 app.listen(app.get('port'), function() {
