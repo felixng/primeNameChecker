@@ -200,12 +200,12 @@
 	var NLForm = React.createClass({
 	  displayName: 'NLForm',
 
-	  componentDidMount: function () {
-	    window.addEventListener('keyup', this.keyDown);
-	    setTimeout(this.nextStage, 3000);
-	  },
 	  getInitialState: function () {
 	    return { open: false, stage: 0, isPrime: false, number: 0, name: '' };
+	  },
+	  componentDidMount: function () {
+	    window.addEventListener('keyup', this.keyDown);
+	    setTimeout(this.next, 3000);
 	  },
 	  nextStage: function () {
 	    this.setState({ error: false });
@@ -233,7 +233,6 @@
 	      }
 	  },
 	  subscribe: function (formData) {
-	    console.log(formData);
 	    $.ajax({
 	      url: this.props.url,
 	      dataType: 'json',
@@ -246,8 +245,6 @@
 	        console.error(this.props.url, status, err.toString());
 	      }.bind(this)
 	    });
-
-	    console.log('done');
 	  },
 	  handleSubmit: function (e) {
 	    e.preventDefault();e.stopPropagation();
@@ -263,10 +260,19 @@
 	      } else {
 	        this.setState({ isPrime: false, number: resultNumber });
 	      }
-	      this.subscribe({ name: name, location: location, email: email });
+	      this.subscribe({ name: name, location: location, email: email, date: Date.now(), readable_date: new Date() });
 	      this.nextStage();
 	    } else {
 	      this.setState({ error: true });
+	    }
+	  },
+	  next: function (e) {
+	    if (e) {
+	      e.preventDefault();e.stopPropagation();
+	    }
+
+	    if (this.state.stage != 1) {
+	      this.nextStage();
 	    }
 	  },
 	  back: function (e) {
@@ -318,7 +324,7 @@
 	          ) : null,
 	          this.state.stage == 0 ? React.createElement(
 	            'a',
-	            { className: 'codrops-icon codrops-icon-next', onClick: this.nextStage },
+	            { className: 'codrops-icon codrops-icon-next', onClick: this.next },
 	            React.createElement(
 	              'span',
 	              null,

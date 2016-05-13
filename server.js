@@ -50,12 +50,17 @@ app.post('/api/subscribe', function(req, res) {
     console.log(req.body);
     var collection = db.collection('curiosity')
     collection.insert(req.body, function(err, result) {
+      addToEmailList(req.body.date, req.body.date);
       if (err) {
         throw err;
       } 
     });
   });
 });
+
+addToEmailList = function(name, email){
+  console.log(name);
+}
 
 app.listen(app.get('port'), function() {
   console.log('Server started: http://localhost:' + app.get('port') + '/');
