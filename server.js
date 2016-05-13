@@ -94,12 +94,11 @@ addToEmailList = function(name, email){
     if (error)
         console.log(error.message);
     else
-        console.log(JSON.stringify(data)); 
+        //console.log(JSON.stringify(data)); 
   });
 
 }
 
 app.listen(app.get('port'), function() {
   console.log('Server started: http://localhost:' + app.get('port') + '/');
-  console.log(process.env.MONGODB_URI);
 });

@@ -233,18 +233,20 @@
 	      }
 	  },
 	  subscribe: function (formData) {
-	    $.ajax({
-	      url: this.props.url,
-	      dataType: 'json',
-	      type: 'POST',
-	      data: formData,
-	      success: function (data) {
-	        console.log('success!');
-	      }.bind(this),
-	      error: function (xhr, status, err) {
-	        console.error(this.props.url, status, err.toString());
-	      }.bind(this)
-	    });
+	    if (formData) {
+	      $.ajax({
+	        url: this.props.url,
+	        dataType: 'json',
+	        type: 'POST',
+	        data: formData,
+	        success: function (data) {
+	          console.log('success!');
+	        }.bind(this),
+	        error: function (xhr, status, err) {
+	          console.error(this.props.url, status, err.toString());
+	        }.bind(this)
+	      });
+	    }
 	  },
 	  handleSubmit: function (e) {
 	    e.preventDefault();e.stopPropagation();
@@ -260,6 +262,7 @@
 	      } else {
 	        this.setState({ isPrime: false, number: resultNumber });
 	      }
+
 	      this.subscribe({ name: name, location: location, email: email, date: Date.now(), readable_date: new Date() });
 	      this.nextStage();
 	    } else {
