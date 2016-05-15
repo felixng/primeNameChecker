@@ -50,6 +50,9 @@ var Result = React.createClass({
         <div>
             <span className="highlight">{this.props.name}</span> equals to {this.props.number}.<br/> 
             Your name  <span className="highlight">is {this.state.prime}</span>a prime number!
+            <div className="startOver">      
+              <h6><a href="/"><i className="curious-icon curious-icon-refresh"></i>Start Again</a></h6>
+            </div>
         </div>
     );
   }
@@ -219,12 +222,12 @@ var NLForm = React.createClass({
       <div className="fs-form-wrap" id="fs-form-wrap">
           <div className="fs-title">
             <h1><a href="/">Project Curious</a></h1>
-            <div className="codrops-top">
+            <div className="curious-top">
               { this.state.stage != 0 ? 
-                <a className="codrops-icon codrops-icon-prev" onClick={this.back}><span>Back</span></a>
+                <a className="curious-icon curious-icon-prev" onClick={this.back}><span>Back</span></a>
                 : null }
               { this.state.stage == 0 ? 
-                <a className="codrops-icon codrops-icon-next" onClick={this.next}><span>Next</span></a>
+                <a className="curious-icon curious-icon-next" onClick={this.next}><span>Next</span></a>
                 : null }
             </div>
           </div>

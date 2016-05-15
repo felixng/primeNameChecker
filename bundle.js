@@ -288,10 +288,10 @@
 	        ),
 	        React.createElement(
 	          'div',
-	          { className: 'codrops-top' },
+	          { className: 'curious-top' },
 	          this.state.stage != 0 ? React.createElement(
 	            'a',
-	            { className: 'codrops-icon codrops-icon-prev', onClick: this.back },
+	            { className: 'curious-icon curious-icon-prev', onClick: this.back },
 	            React.createElement(
 	              'span',
 	              null,
@@ -300,7 +300,7 @@
 	          ) : null,
 	          this.state.stage == 0 ? React.createElement(
 	            'a',
-	            { className: 'codrops-icon codrops-icon-next', onClick: this.nextStage },
+	            { className: 'curious-icon curious-icon-next', onClick: this.nextStage },
 	            React.createElement(
 	              'span',
 	              null,

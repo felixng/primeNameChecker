@@ -105,12 +105,12 @@ div.errorMessage{
 
 
 /* Top Navigation Style */
-.codrops-top {
+.curious-top {
 	display: inline-block;
 	float:right;
 }
 
-.codrops-top a {
+.curious-top a {
 	font-size: 0.69em;
 	padding: 0 0.25em;
 	display: inline-block;
@@ -118,7 +118,7 @@ div.errorMessage{
 	font-size: 1.5em;
 }
 
-.codrops-icon:before {
+.curious-icon:before {
 	margin: 4px 4px;
 	text-transform: none;
 	font-weight: normal;
@@ -131,15 +131,15 @@ div.errorMessage{
 	-webkit-font-smoothing: antialiased;
 }
 
-.codrops-icon-prev:before {
+.curious-icon-prev:before {
 	content: "\e903";
 }
 
-.codrops-icon-next:before {
+.curious-icon-next:before {
 	content: "\e902";
 }
 
-.codrops-icon span {
+.curious-icon span {
 	display: none;
 	position: absolute;
 	font-size: 0.85em;
@@ -147,8 +147,31 @@ div.errorMessage{
 	font-weight: 700;
 }
 
-.codrops-icon:hover span {
+.curious-icon:hover span {
 	display: block;
 	color: #6a7b7e;
+}
+
+.curious-icon-refresh:before {
+    content: "\e900";
+}
+.curious-icon-sync:before {
+    content: "\e901";
+}
+.curious-icon-repeat:before {
+    content: "\e904";
+}
+
+.curious-icon-arrow-back:before {
+    content: "\e905";
+}
+
+.startOver i:before{
+	font-size: 1em;
+	margin-right: 1%;
+}
+
+.startOver h6 {
+	margin-top: 5%;
 }
 

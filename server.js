@@ -57,8 +57,6 @@ app.post('/api/subscribe', function(req, res) {
       throw err;
     }
     
-    console.log(req.body);
-    
     var collection = db.collection('curiosity')
     collection.insert(req.body, function(err, result) {
       
@@ -73,13 +71,7 @@ app.post('/api/subscribe', function(req, res) {
 });
 
 addToEmailList = function(name, email){
-  // api.lists({}, function (error, data) {
-  //     if (error)
-  //         console.log(error.message);
-  //     else
-  //         console.log(JSON.stringify(data)); // Do something with your data!
-  // });
-
+  //TODO: Dedublicate
   var merge_vars = {
       EMAIL: email,
       FNAME: name

@@ -116,7 +116,21 @@
 	        'is ',
 	        this.state.prime
 	      ),
-	      'a prime number!'
+	      'a prime number!',
+	      React.createElement(
+	        'div',
+	        { className: 'startOver' },
+	        React.createElement(
+	          'h6',
+	          null,
+	          React.createElement(
+	            'a',
+	            { href: '/' },
+	            React.createElement('i', { className: 'curious-icon curious-icon-refresh' }),
+	            'Start Again'
+	          )
+	        )
+	      )
 	    );
 	  }
 	});
@@ -262,7 +276,7 @@
 	      } else {
 	        this.setState({ isPrime: false, number: resultNumber });
 	      }
-
+	      console.log('here');
 	      this.subscribe({ name: name, location: location, email: email, date: Date.now(), readable_date: new Date() });
 	      this.nextStage();
 	    } else {
@@ -315,10 +329,10 @@
 	        ),
 	        React.createElement(
 	          'div',
-	          { className: 'codrops-top' },
+	          { className: 'curious-top' },
 	          this.state.stage != 0 ? React.createElement(
 	            'a',
-	            { className: 'codrops-icon codrops-icon-prev', onClick: this.back },
+	            { className: 'curious-icon curious-icon-prev', onClick: this.back },
 	            React.createElement(
 	              'span',
 	              null,
@@ -327,7 +341,7 @@
 	          ) : null,
 	          this.state.stage == 0 ? React.createElement(
 	            'a',
-	            { className: 'codrops-icon codrops-icon-next', onClick: this.next },
+	            { className: 'curious-icon curious-icon-next', onClick: this.next },
 	            React.createElement(
 	              'span',
 	              null,
