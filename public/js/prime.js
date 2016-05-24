@@ -1,6 +1,11 @@
+require("particles.js")
 var React = require('react');
 var ReactDOM = require('react-dom');
 var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
+
+particlesJS.load('container', 'particles.json', function() {
+  console.log('callback - particles.js config loaded');
+});
 
 // ****
 // Natural Language Form

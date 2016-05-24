@@ -12,8 +12,10 @@
     "express": "^4.4.5",
     "mailchimp": "^1.1.6",
     "mongodb": "^2.1.18",
+    "particles.js": "^2.0.0",
     "react": "^15.0.2",
-    "react-dom": "^15.0.2"
+    "react-dom": "^15.0.2",
+    "react-social": "^1.1.1"
   },
   "devDependencies": {
     "gulp": "^3.9.1",

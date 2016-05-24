@@ -289,3 +289,10 @@ input:focus::-ms-input-placeholder {
 .highlight {
 	color: rgba(242,213,0, 0.5);
 }
+
+canvas.particles-js-canvas-el{
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index:-100;
+}
