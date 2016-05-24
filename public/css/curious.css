@@ -118,6 +118,10 @@ div.errorMessage{
 	font-size: 1.5em;
 }
 
+.curious-top a:hover {
+	cursor: pointer;
+}
+
 .curious-icon:before {
 	margin: 4px 4px;
 	text-transform: none;
