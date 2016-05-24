@@ -274,6 +274,20 @@ input:focus::-ms-input-placeholder {
 	transition-delay: 0s;
 }
 
+.footer {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	padding: 2.25em;
+	opacity: 0.75;
+	font-weight: 600;
+}
+
+.footer a{
+	opacity: 1;
+	font-weight: 700;
+}
+
 @media screen and (max-width: 45em) {
 	.nl-form {
 		font-size: 3em;
@@ -283,6 +297,11 @@ input:focus::-ms-input-placeholder {
 @media screen and (max-width: 25em) {
 	.nl-form {
 		font-size: 2em;
+	}
+
+	.footer {
+		padding-bottom: 1em;
+		font-size: 0.75em;
 	}
 }
 
@@ -296,3 +315,4 @@ canvas.particles-js-canvas-el{
 	left: 0;
 	z-index:-100;
 }
+
