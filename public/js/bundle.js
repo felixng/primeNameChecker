@@ -139,7 +139,7 @@
 	            'a',
 	            { href: '/' },
 	            React.createElement('i', { className: 'curious-icon curious-icon-refresh' }),
-	            'Start Again'
+	            'Start Over'
 	          )
 	        )
 	      )

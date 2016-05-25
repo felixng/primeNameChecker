@@ -171,9 +171,7 @@ div.errorMessage{
 }
 
 .startOver{
-	display: inline-block;
-    float: right;
-    width: 50%;
+	float: right;
 }
 
 .startOver i:before, .next i:before{
@@ -184,7 +182,13 @@ div.errorMessage{
 .startOver h6, .next h6 {
 	margin-top: 5%;
 	margin-bottom: 2%;
+	float: right;
+    width: 80%;
+}
+
+.startOver{
 	float:right;
+	width: 50%;
 }
 
 .next h6 a{

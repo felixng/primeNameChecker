@@ -61,7 +61,7 @@ var Result = React.createClass({
             <span className="highlight">{this.props.name}</span> equals to: <div className="result-number">{this.props.number}</div> 
             Your name  <span className="highlight">is {this.state.prime}</span>a prime number!
             <div className="startOver">      
-              <h6><a href="/"><i className="curious-icon curious-icon-refresh"></i>Start Again</a></h6>
+              <h6><a href="/"><i className="curious-icon curious-icon-refresh"></i>Start Over</a></h6>
             </div>
         </div>
     );
