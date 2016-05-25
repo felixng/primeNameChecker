@@ -62,12 +62,15 @@
 	  getInitialState: function () {
 	    return {};
 	  },
-
+	  // next: function(){
+	  //   console.log('onupdate');
+	  //   this.props.onUpdate(true);
+	  // },
 	  render: function () {
 	    return React.createElement(
 	      'div',
 	      null,
-	      'Hello, my name is Christopher John Francis Boone.  I am fifteen-year-old.  I am from Swindon, England.'
+	      this.props.text
 	    );
 	  }
 	});
@@ -124,7 +127,7 @@
 	      'a prime number!',
 	      React.createElement(
 	        'div',
-	        { className: 'startOver' },
+	        { className: 'next' },
 	        React.createElement(
 	          'h6',
 	          null,
@@ -224,7 +227,8 @@
 	  },
 	  componentDidMount: function () {
 	    window.addEventListener('keyup', this.keyDown);
-	    setTimeout(this.next, 3000);
+	    //setTimeout(this.setStage(1), 100000);
+	    //setTimeout(this.setState({ stage: 2 }), 10000);
 	  },
 	  nextStage: function () {
 	    this.setState({ error: false });
@@ -293,7 +297,8 @@
 	      e.preventDefault();e.stopPropagation();
 	    }
 
-	    if (this.state.stage != 1) {
+	    if (this.state.stage != 2) {
+	      //setTimeout(this.next, 10000);
 	      this.nextStage();
 	    }
 	  },
@@ -344,7 +349,7 @@
 	              'Back'
 	            )
 	          ) : null,
-	          this.state.stage == 0 ? React.createElement(
+	          this.state.stage == 0 || this.state.stage == 1 ? React.createElement(
 	            'a',
 	            { className: 'curious-icon curious-icon-next', onClick: this.next },
 	            React.createElement(
@@ -364,14 +369,23 @@
 	          this.state.stage == 0 ? React.createElement(
 	            ReactCSSTransitionGroup,
 	            { transitionName: 'fade', transitionAppear: true, transitionAppearTimeout: 500, transitionEnterTimeout: 500, transitionLeaveTimeout: 500 },
-	            React.createElement(Intro, null)
+	            React.createElement(Intro, {
+	              text: 'Hello, my name is Christopher John Francis Boone.  I am fifteen-year-old.  I am from Swindon, England.',
+	              onUpdate: this.next })
+	          ) : null,
+	          this.state.stage == 1 ? React.createElement(
+	            ReactCSSTransitionGroup,
+	            { transitionName: 'fade', transitionAppear: true, transitionAppearTimeout: 500, transitionEnterTimeout: 500, transitionLeaveTimeout: 500 },
+	            React.createElement(Intro, {
+	              text: ["I like Prime Number.  And I don't talk to strangers...", React.createElement('br', null), "But if you introduce yourself, I will tell you if your name equals a prime number!"],
+	              onUpdate: this.next })
 	          ) : null,
 	          this.state.error ? React.createElement(
 	            ReactCSSTransitionGroup,
 	            { transitionName: 'fade', transitionAppear: true, transitionAppearTimeout: 500, transitionEnterTimeout: 500, transitionLeaveTimeout: 500 },
 	            React.createElement(Error, null)
 	          ) : null,
-	          this.state.stage == 1 ? React.createElement(
+	          this.state.stage == 2 ? React.createElement(
 	            ReactCSSTransitionGroup,
 	            { transitionName: 'fade', transitionAppear: true, transitionAppearTimeout: 500, transitionEnterTimeout: 500, transitionLeaveTimeout: 500 },
 	            React.createElement(
@@ -408,7 +422,7 @@
 	              React.createElement('div', { className: 'nl-overlay', onClick: this.closeOverlay })
 	            )
 	          ) : null,
-	          this.state.stage == 2 ? React.createElement(
+	          this.state.stage == 3 ? React.createElement(
 	            ReactCSSTransitionGroup,
 	            { transitionName: 'fade', transitionAppear: true, transitionAppearTimeout: 500, transitionEnterTimeout: 500, transitionLeaveTimeout: 500 },
 	            React.createElement(Result, { name: this.state.name,

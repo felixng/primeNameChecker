@@ -14,11 +14,14 @@ var Intro = React.createClass({
   getInitialState: function() {
     return {  };
   },
-  
+  // next: function(){
+  //   console.log('onupdate');
+  //   this.props.onUpdate(true);
+  // },
   render: function() {
     return (
         <div>
-            Hello, my name is Christopher John Francis Boone.  I am fifteen-year-old.  I am from Swindon, England.
+            {this.props.text}
         </div>
     );
   }
@@ -55,7 +58,7 @@ var Result = React.createClass({
         <div>
             <span className="highlight">{this.props.name}</span> equals to {this.props.number}.<br/> 
             Your name  <span className="highlight">is {this.state.prime}</span>a prime number!
-            <div className="startOver">      
+            <div className="next">      
               <h6><a href="/"><i className="curious-icon curious-icon-refresh"></i>Start Again</a></h6>
             </div>
         </div>
@@ -124,7 +127,8 @@ var NLForm = React.createClass({
   },
   componentDidMount: function() {
     window.addEventListener('keyup', this.keyDown);
-    setTimeout(this.next, 3000);
+    //setTimeout(this.setStage(1), 100000);
+    //setTimeout(this.setState({ stage: 2 }), 10000);
   },
   nextStage: function() {
     this.setState({error: false});
@@ -196,8 +200,9 @@ var NLForm = React.createClass({
     if (e){
       e.preventDefault(); e.stopPropagation();   
     }
-
-    if (this.state.stage != 1){
+    
+    if (this.state.stage != 2){
+      //setTimeout(this.next, 10000);
       this.nextStage();
     }
   },
@@ -231,7 +236,7 @@ var NLForm = React.createClass({
               { this.state.stage != 0 ? 
                 <a className="curious-icon curious-icon-prev" onClick={this.back}><span>Back</span></a>
                 : null }
-              { this.state.stage == 0 ? 
+              { this.state.stage == 0 || this.state.stage == 1 ? 
                 <a className="curious-icon curious-icon-next" onClick={this.next}><span>Next</span></a>
                 : null }
             </div>
@@ -241,7 +246,16 @@ var NLForm = React.createClass({
             <form id="nl-form" className="nl-form">
               { this.state.stage == 0 ? 
                   <ReactCSSTransitionGroup transitionName="fade" transitionAppear={true} transitionAppearTimeout={500} transitionEnterTimeout={500} transitionLeaveTimeout={500}>
-                    <Intro /> 
+                    <Intro 
+                      text="Hello, my name is Christopher John Francis Boone.  I am fifteen-year-old.  I am from Swindon, England." 
+                      onUpdate={this.next}/> 
+                  </ReactCSSTransitionGroup>
+                  : null }
+              { this.state.stage == 1 ? 
+                  <ReactCSSTransitionGroup transitionName="fade" transitionAppear={true} transitionAppearTimeout={500} transitionEnterTimeout={500} transitionLeaveTimeout={500}>
+                    <Intro 
+                      text={["I like Prime Number.  And I don't talk to strangers...", <br/>,  "But if you introduce yourself, I will tell you if your name equals a prime number!"]} 
+                      onUpdate={this.next}/> 
                   </ReactCSSTransitionGroup>
                   : null }
               { this.state.error ? 
@@ -249,7 +263,7 @@ var NLForm = React.createClass({
                     <Error /> 
                   </ReactCSSTransitionGroup>
                 : null }
-              { this.state.stage == 1 ? 
+              { this.state.stage == 2 ? 
                 <ReactCSSTransitionGroup transitionName="fade" transitionAppear={true} transitionAppearTimeout={500} transitionEnterTimeout={500} transitionLeaveTimeout={500}>
                     <div id="details">
                       My name is <FreeTextBox ref="name" 
@@ -276,7 +290,7 @@ var NLForm = React.createClass({
                   </ReactCSSTransitionGroup>
                 
                  : null }
-              { this.state.stage == 2 ? 
+              { this.state.stage == 3 ? 
                 <ReactCSSTransitionGroup transitionName="fade" transitionAppear={true} transitionAppearTimeout={500} transitionEnterTimeout={500} transitionLeaveTimeout={500}>
                     <Result name={this.state.name} 
                     isPrime={this.state.isPrime} 
