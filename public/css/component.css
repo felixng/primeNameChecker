@@ -19,7 +19,7 @@
 	position: absolute;
 	z-index: -1;   
 	background: url('../img/curious-name-2.png') no-repeat fixed bottom right;
-	background-size: 40%;
+	background-size: 40em;
 }
 
 /* general style for the form */
@@ -325,6 +325,11 @@ input:focus::-ms-input-placeholder {
 }
 
 @media screen and (max-width: 25em) {
+	.container:after{
+		background-size: 40em;
+		background-position: -45% 100%;
+	}
+
 	.nl-form {
 		margin-top: 45%;
 		font-size: 1.75em;
