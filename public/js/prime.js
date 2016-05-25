@@ -2,7 +2,7 @@ require("particles.js")
 var React = require('react');
 var ReactDOM = require('react-dom');
 var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
-
+var maxStage = 3;
 particlesJS.load('container', 'particles.json', function() {
   console.log('callback - particles.js config loaded');
 });
@@ -207,7 +207,7 @@ var NLForm = React.createClass({
       timer = setTimeout(this.next, 10000);
     }
 
-    if (this.state.stage != 2){
+    if (this.state.stage != 2 && this.state.stage < maxStage){
       //setTimeout(this.next, 10000);
       this.nextStage();
     }
