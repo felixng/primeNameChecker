@@ -184,6 +184,7 @@ div.errorMessage{
 .startOver h6, .next h6 {
 	margin-top: 5%;
 	margin-bottom: 2%;
+	float:right;
 }
 
 .next h6 a{
