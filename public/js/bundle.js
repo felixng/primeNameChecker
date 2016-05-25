@@ -48,7 +48,7 @@
 	var React = __webpack_require__(2);
 	var ReactDOM = __webpack_require__(34);
 	var ReactCSSTransitionGroup = __webpack_require__(169);
-
+	var maxStage = 3;
 	particlesJS.load('container', 'particles.json', function () {
 	  console.log('callback - particles.js config loaded');
 	});
@@ -115,10 +115,12 @@
 	        { className: 'highlight' },
 	        this.props.name
 	      ),
-	      ' equals to ',
-	      this.props.number,
-	      '.',
-	      React.createElement('br', null),
+	      ' equals to: ',
+	      React.createElement(
+	        'div',
+	        { className: 'result-number' },
+	        this.props.number
+	      ),
 	      'Your name  ',
 	      React.createElement(
 	        'span',
@@ -129,7 +131,7 @@
 	      'a prime number!',
 	      React.createElement(
 	        'div',
-	        { className: 'next' },
+	        { className: 'startOver' },
 	        React.createElement(
 	          'h6',
 	          null,
@@ -303,7 +305,7 @@
 	      timer = setTimeout(this.next, 10000);
 	    }
 
-	    if (this.state.stage != 2) {
+	    if (this.state.stage != 2 && this.state.stage < maxStage) {
 	      //setTimeout(this.next, 10000);
 	      this.nextStage();
 	    }

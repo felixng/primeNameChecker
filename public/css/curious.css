@@ -170,6 +170,12 @@ div.errorMessage{
     content: "\e905";
 }
 
+.startOver{
+	display: inline-block;
+    float: right;
+    width: 50%;
+}
+
 .startOver i:before, .next i:before{
 	font-size: 1em;
 	margin-right: 1%;
