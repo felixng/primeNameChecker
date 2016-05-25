@@ -274,9 +274,19 @@ input:focus::-ms-input-placeholder {
 	transition-delay: 0s;
 }
 
-.footer {
+.footer p:nth-child(1){
 	position: absolute;
 	left: 0;
+	bottom: 0;
+	padding: 2.25em;
+	opacity: 0.75;
+	font-weight: 600;
+	width: 55%;
+}
+
+.footer p.felix-ng {
+    position: absolute;
+	right: 0;
 	bottom: 0;
 	padding: 2.25em;
 	opacity: 0.75;
