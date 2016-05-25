@@ -7,6 +7,8 @@ particlesJS.load('container', 'particles.json', function() {
   console.log('callback - particles.js config loaded');
 });
 
+var timer;
+
 // ****
 // Natural Language Form
 // ****
@@ -20,7 +22,7 @@ var Intro = React.createClass({
   // },
   render: function() {
     return (
-        <div>
+        <div key="this.props.text">
             {this.props.text}
         </div>
     );
@@ -127,8 +129,7 @@ var NLForm = React.createClass({
   },
   componentDidMount: function() {
     window.addEventListener('keyup', this.keyDown);
-    //setTimeout(this.setStage(1), 100000);
-    //setTimeout(this.setState({ stage: 2 }), 10000);
+    timer = setTimeout(this.next, 10000);
   },
   nextStage: function() {
     this.setState({error: false});
@@ -201,6 +202,11 @@ var NLForm = React.createClass({
       e.preventDefault(); e.stopPropagation();   
     }
     
+    clearTimeout(timer);
+    if (this.state.stage == 0 || this.state.stage == 1){
+      timer = setTimeout(this.next, 10000);
+    }
+
     if (this.state.stage != 2){
       //setTimeout(this.next, 10000);
       this.nextStage();
@@ -208,6 +214,12 @@ var NLForm = React.createClass({
   },
   back: function(e){
     e.preventDefault(); e.stopPropagation(); 
+
+    clearTimeout(timer);
+    if (this.state.stage == 1 || this.state.stage == 2){
+      timer = setTimeout(this.next, 10000);
+    }
+
     if (this.state.stage > 0){
       this.lastStage();
     }
@@ -231,7 +243,7 @@ var NLForm = React.createClass({
     return (
       <div className="fs-form-wrap" id="fs-form-wrap">
           <div className="fs-title">
-            <h1><a href="/">Project Curious</a></h1>
+            <h1><a href="/">Project Curious Name</a></h1>
             <div className="curious-top">
               { this.state.stage != 0 ? 
                 <a className="curious-icon curious-icon-prev" onClick={this.back}><span>Back</span></a>
@@ -246,16 +258,14 @@ var NLForm = React.createClass({
             <form id="nl-form" className="nl-form">
               { this.state.stage == 0 ? 
                   <ReactCSSTransitionGroup transitionName="fade" transitionAppear={true} transitionAppearTimeout={500} transitionEnterTimeout={500} transitionLeaveTimeout={500}>
-                    <Intro 
-                      text="Hello, my name is Christopher John Francis Boone.  I am fifteen-year-old.  I am from Swindon, England." 
-                      onUpdate={this.next}/> 
+                    <Intro
+                      text="Hello, my name is Christopher John Francis Boone. I am a 15-year-old boy from Swindon, England. And I like Prime Numbers." /> 
                   </ReactCSSTransitionGroup>
                   : null }
               { this.state.stage == 1 ? 
                   <ReactCSSTransitionGroup transitionName="fade" transitionAppear={true} transitionAppearTimeout={500} transitionEnterTimeout={500} transitionLeaveTimeout={500}>
-                    <Intro 
-                      text={["I like Prime Number.  And I don't talk to strangers...", <br/>,  "But if you introduce yourself, I will tell you if your name equals a prime number!"]} 
-                      onUpdate={this.next}/> 
+                    <Intro
+                      text={["I don't talk to strangers... But if you introduce yourself, I will tell you if your name equals a prime number!"]} /> 
                   </ReactCSSTransitionGroup>
                   : null }
               { this.state.error ? 
@@ -280,7 +290,7 @@ var NLForm = React.createClass({
                                                  open={this.state.open} 
                                                  onUpdate={this.handleChange}  
                                                  displayText='detective@boone.com' 
-                                                 exampleText='Christopher Boone'/>.
+                                                 exampleText='Christopher Boone'/>
                       
                       <div className="nl-submit-wrap">
                         <button className="nl-submit" type="submit" onClick={this.handleSubmit}>Is my name a Prime Number?</button>

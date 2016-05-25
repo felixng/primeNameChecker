@@ -274,7 +274,11 @@ input:focus::-ms-input-placeholder {
 	transition-delay: 0s;
 }
 
-.footer p:nth-child(1){
+.mobile-footer{
+	display: none;
+}
+
+.footer p:nth-child(1), .mobile-footer{
 	position: absolute;
 	left: 0;
 	bottom: 0;
@@ -304,14 +308,37 @@ input:focus::-ms-input-placeholder {
 	.nl-form {
 		font-size: 3em;
 	}
+
 }
 
 @media screen and (max-width: 25em) {
 	.nl-form {
-		font-size: 2em;
+		margin-top: 45%;
+		font-size: 1.75em;
+	}
+
+	.footer p:nth-child(1){
+		display: none;
+	}
+	.mobile-footer{
+		display: inline;
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		padding-left: 2.25em;
+		padding-bottom: 2.5em;
+		opacity: 0.75;
+		font-weight: 600;
+		width: 55%;
+	}
+
+	.fs-title h1{
+		font-size: 1.75em;
+		max-width: 50%
 	}
 
 	.footer {
+		display: block;
 		padding-bottom: 1em;
 		font-size: 0.75em;
 	}

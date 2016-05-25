@@ -53,6 +53,8 @@
 	  console.log('callback - particles.js config loaded');
 	});
 
+	var timer;
+
 	// ****
 	// Natural Language Form
 	// ****
@@ -69,7 +71,7 @@
 	  render: function () {
 	    return React.createElement(
 	      'div',
-	      null,
+	      { key: 'this.props.text' },
 	      this.props.text
 	    );
 	  }
@@ -227,8 +229,7 @@
 	  },
 	  componentDidMount: function () {
 	    window.addEventListener('keyup', this.keyDown);
-	    //setTimeout(this.setStage(1), 100000);
-	    //setTimeout(this.setState({ stage: 2 }), 10000);
+	    timer = setTimeout(this.next, 10000);
 	  },
 	  nextStage: function () {
 	    this.setState({ error: false });
@@ -297,6 +298,11 @@
 	      e.preventDefault();e.stopPropagation();
 	    }
 
+	    clearTimeout(timer);
+	    if (this.state.stage == 0 || this.state.stage == 1) {
+	      timer = setTimeout(this.next, 10000);
+	    }
+
 	    if (this.state.stage != 2) {
 	      //setTimeout(this.next, 10000);
 	      this.nextStage();
@@ -304,6 +310,12 @@
 	  },
 	  back: function (e) {
 	    e.preventDefault();e.stopPropagation();
+
+	    clearTimeout(timer);
+	    if (this.state.stage == 1 || this.state.stage == 2) {
+	      timer = setTimeout(this.next, 10000);
+	    }
+
 	    if (this.state.stage > 0) {
 	      this.lastStage();
 	    }
@@ -334,7 +346,7 @@
 	          React.createElement(
 	            'a',
 	            { href: '/' },
-	            'Project Curious'
+	            'Project Curious Name'
 	          )
 	        ),
 	        React.createElement(
@@ -370,15 +382,13 @@
 	            ReactCSSTransitionGroup,
 	            { transitionName: 'fade', transitionAppear: true, transitionAppearTimeout: 500, transitionEnterTimeout: 500, transitionLeaveTimeout: 500 },
 	            React.createElement(Intro, {
-	              text: 'Hello, my name is Christopher John Francis Boone.  I am fifteen-year-old.  I am from Swindon, England.',
-	              onUpdate: this.next })
+	              text: 'Hello, my name is Christopher John Francis Boone. I am a 15-year-old boy from Swindon, England. And I like Prime Numbers.' })
 	          ) : null,
 	          this.state.stage == 1 ? React.createElement(
 	            ReactCSSTransitionGroup,
 	            { transitionName: 'fade', transitionAppear: true, transitionAppearTimeout: 500, transitionEnterTimeout: 500, transitionLeaveTimeout: 500 },
 	            React.createElement(Intro, {
-	              text: ["I like Prime Number.  And I don't talk to strangers...", React.createElement('br', null), "But if you introduce yourself, I will tell you if your name equals a prime number!"],
-	              onUpdate: this.next })
+	              text: ["I don't talk to strangers... But if you introduce yourself, I will tell you if your name equals a prime number!"] })
 	          ) : null,
 	          this.state.error ? React.createElement(
 	            ReactCSSTransitionGroup,
@@ -409,7 +419,6 @@
 	                onUpdate: this.handleChange,
 	                displayText: 'detective@boone.com',
 	                exampleText: 'Christopher Boone' }),
-	              '.',
 	              React.createElement(
 	                'div',
 	                { className: 'nl-submit-wrap' },
