@@ -170,6 +170,14 @@ div.errorMessage{
     content: "\e905";
 }
 
+.curious-icon-facebook:before {
+    content: "\e910";
+}
+
+.curious-icon-twitter:before {
+    content: "\e90d";
+}
+
 .startOver{
 	float: right;
 }

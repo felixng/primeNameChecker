@@ -303,6 +303,7 @@ input:focus::-ms-input-placeholder {
 }
 
 .footer p.felix-ng {
+	max-width:50%;
     position: absolute;
 	right: 0;
 	bottom: 0;
@@ -310,6 +311,7 @@ input:focus::-ms-input-placeholder {
 	padding-bottom: 1.5em;
 	opacity: 0.75;
 	font-weight: 600;
+	vertical-align: middle;
 }
 
 .footer a{
