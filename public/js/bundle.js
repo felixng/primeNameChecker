@@ -137,16 +137,16 @@
 	          null,
 	          React.createElement(
 	            'a',
-	            { className: 'curious-icon curious-icon-facebook', href: 'https://www.facebook.com/sharer/sharer.php?u=http%3A//curiousname.ensemblr.co', target: '_blank' },
+	            { className: 'curious-icon curious-icon-facebook', href: 'javascript:fbShare(\'http%3A//curiousname.ensemblr.co\', 520, 350)', target: '_blank' },
 	            React.createElement(
 	              'span',
 	              null,
-	              'Share'
+	              'Share!'
 	            )
 	          ),
 	          React.createElement(
 	            'a',
-	            { className: 'curious-icon curious-icon-twitter', href: "https://twitter.com/home?status=" + encodeURIComponent(this.props.name) + "%20is%20" + encodeURIComponent(this.state.prime) + "a%20prime%20number!%20Check%20your%20name%20at%20Project%20Curious%20Name!%20http%3A//bit.ly/curname", target: '_blank' },
+	            { className: 'curious-icon curious-icon-twitter', href: "javascript:tweet('My%20name%20" + encodeURIComponent(this.props.name) + "%20is%20" + encodeURIComponent(this.state.prime) + "a%20prime%20number:%20" + this.props.number + "!%20Check%20yours%20at%20Project%20Curious%20Name!%20http%3A//bit.ly/curname', 520, 350)", target: '_blank' },
 	            React.createElement(
 	              'span',
 	              null,
@@ -349,7 +349,6 @@
 	  calcNumber: function (name) {
 	    if (name.length > 0) {
 	      var num = name.trim().toLowerCase().split('').map(function (char) {
-	        console.log("char" + char.charCodeAt(0) - 96);
 	        return char.charCodeAt(0) - 96;
 	      }).reduce(function (current, previous) {
 	        return previous + current;

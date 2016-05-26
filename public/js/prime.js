@@ -62,12 +62,14 @@ var Result = React.createClass({
             Your name  <span className="highlight">is {this.state.prime}</span>a prime number!
             <div className="startOver">      
               <h6>
-                <a className="curious-icon curious-icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http%3A//curiousname.ensemblr.co" target="_blank"><span>Share</span></a>
-                <a className="curious-icon curious-icon-twitter" href={"https://twitter.com/home?status="
+                <a className="curious-icon curious-icon-facebook" href="javascript:fbShare('http%3A//curiousname.ensemblr.co', 520, 350)" target="_blank"><span>Share!</span></a>
+                <a className="curious-icon curious-icon-twitter" href={"javascript:tweet('My%20name%20"
                          + encodeURIComponent(this.props.name)
                          + "%20is%20"
                          + encodeURIComponent(this.state.prime)
-                         + "a%20prime%20number!%20Check%20your%20name%20at%20Project%20Curious%20Name!%20http%3A//bit.ly/curname"} target="_blank"><span>Tweet</span></a>
+                         + "a%20prime%20number:%20"
+                         + this.props.number
+                         + "!%20Check%20yours%20at%20Project%20Curious%20Name!%20http%3A//bit.ly/curname', 520, 350)"} target="_blank"><span>Tweet</span></a>
                 <a className="curious-icon curious-icon-refresh" href="/"><span>Start Over</span></a>
               </h6>
             </div>
@@ -410,3 +412,4 @@ ReactDOM.render(
 //   <QuestionForm />,
 //   document.getElementById('main')
 // );
+
