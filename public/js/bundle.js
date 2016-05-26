@@ -137,41 +137,29 @@
 	          null,
 	          React.createElement(
 	            'a',
-	            { href: 'https://www.facebook.com/sharer/sharer.php?u=http%3A//curiousname.ensemblr.co', target: '_blank' },
+	            { className: 'curious-icon curious-icon-facebook', href: 'https://www.facebook.com/sharer/sharer.php?u=http%3A//curiousname.ensemblr.co', target: '_blank' },
 	            React.createElement(
-	              'i',
-	              { className: 'curious-icon curious-icon-facebook' },
-	              React.createElement(
-	                'span',
-	                null,
-	                'Share'
-	              )
+	              'span',
+	              null,
+	              'Share'
 	            )
 	          ),
 	          React.createElement(
 	            'a',
-	            { href: "https://twitter.com/home?status=" + encodeURIComponent(this.props.name) + "%20is%20" + encodeURIComponent(this.state.prime) + "a%20prime%20number!%20Check%20yours%20at%20Project%20Curious%20Name!%20http%3A//bit.ly/curname", target: '_blank' },
+	            { className: 'curious-icon curious-icon-twitter', href: "https://twitter.com/home?status=" + encodeURIComponent(this.props.name) + "%20is%20" + encodeURIComponent(this.state.prime) + "a%20prime%20number!%20Check%20your%20name%20at%20Project%20Curious%20Name!%20http%3A//bit.ly/curname", target: '_blank' },
 	            React.createElement(
-	              'i',
-	              { className: 'curious-icon curious-icon-twitter' },
-	              React.createElement(
-	                'span',
-	                null,
-	                'Tweet'
-	              )
+	              'span',
+	              null,
+	              'Tweet'
 	            )
 	          ),
 	          React.createElement(
 	            'a',
-	            { href: '/' },
+	            { className: 'curious-icon curious-icon-refresh', href: '/' },
 	            React.createElement(
-	              'i',
-	              { className: 'curious-icon curious-icon-refresh' },
-	              React.createElement(
-	                'span',
-	                null,
-	                'Start Over'
-	              )
+	              'span',
+	              null,
+	              'Start Over'
 	            )
 	          )
 	        )
@@ -360,7 +348,8 @@
 	  },
 	  calcNumber: function (name) {
 	    if (name.length > 0) {
-	      var num = name.toLowerCase().split('').map(function (char) {
+	      var num = name.trim().toLowerCase().split('').map(function (char) {
+	        console.log("char" + char.charCodeAt(0) - 96);
 	        return char.charCodeAt(0) - 96;
 	      }).reduce(function (current, previous) {
 	        return previous + current;

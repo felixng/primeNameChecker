@@ -316,7 +316,7 @@ input:focus::-ms-input-placeholder {
 }
 
 .footer a{
-	opacity: 1;
+	color: rgba(0, 0, 0, 0.5);
 	font-weight: 700;
 }
 

@@ -62,13 +62,13 @@ var Result = React.createClass({
             Your name  <span className="highlight">is {this.state.prime}</span>a prime number!
             <div className="startOver">      
               <h6>
-                <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A//curiousname.ensemblr.co" target="_blank"><i className="curious-icon curious-icon-facebook"><span>Share</span></i></a>
-                <a href={"https://twitter.com/home?status="
+                <a className="curious-icon curious-icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http%3A//curiousname.ensemblr.co" target="_blank"><span>Share</span></a>
+                <a className="curious-icon curious-icon-twitter" href={"https://twitter.com/home?status="
                          + encodeURIComponent(this.props.name)
                          + "%20is%20"
                          + encodeURIComponent(this.state.prime)
-                         + "a%20prime%20number!%20Check%20your%20name%20at%20Project%20Curious%20Name!%20http%3A//bit.ly/curname"} target="_blank"><i className="curious-icon curious-icon-twitter"><span>Tweet</span></i></a>
-                <a href="/"><i className="curious-icon curious-icon-refresh"><span>Start Over</span></i></a>
+                         + "a%20prime%20number!%20Check%20your%20name%20at%20Project%20Curious%20Name!%20http%3A//bit.ly/curname"} target="_blank"><span>Tweet</span></a>
+                <a className="curious-icon curious-icon-refresh" href="/"><span>Start Over</span></a>
               </h6>
             </div>
         </div>
@@ -237,7 +237,7 @@ var NLForm = React.createClass({
   },
   calcNumber: function(name){
     if (name.length > 0 ){
-        var num = name.toLowerCase().split('')
+        var num = name.trim().toLowerCase().split('')
                     .map(function (char) {
                       return char.charCodeAt(0) - 96;
                     })
