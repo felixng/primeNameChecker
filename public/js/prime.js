@@ -57,11 +57,19 @@ var Result = React.createClass({
   },
   render: function() {
     return (
-        <div>
+        <div className="result-text">
             <span className="highlight">{this.props.name}</span> equals to: <div className="result-number">{this.props.number}</div> 
             Your name  <span className="highlight">is {this.state.prime}</span>a prime number!
             <div className="startOver">      
-              <h6><a href="/"><i className="curious-icon curious-icon-refresh"></i>Start Over</a></h6>
+              <h6>
+                <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A//curiousname.ensemblr.co" target="_blank"><i className="curious-icon curious-icon-facebook"><span>Share</span></i></a>
+                <a href={"https://twitter.com/home?status="
+                         + encodeURIComponent(this.props.name)
+                         + "%20is%20"
+                         + encodeURIComponent(this.state.prime)
+                         + "a%20prime%20number!%20Check%20your%20name%20at%20Project%20Curious%20Name!%20http%3A//bit.ly/curname"} target="_blank"><i className="curious-icon curious-icon-twitter"><span>Tweet</span></i></a>
+                <a href="/"><i className="curious-icon curious-icon-refresh"><span>Start Over</span></i></a>
+              </h6>
             </div>
         </div>
     );

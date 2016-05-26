@@ -109,7 +109,7 @@
 	  render: function () {
 	    return React.createElement(
 	      'div',
-	      null,
+	      { className: 'result-text' },
 	      React.createElement(
 	        'span',
 	        { className: 'highlight' },
@@ -137,9 +137,42 @@
 	          null,
 	          React.createElement(
 	            'a',
+	            { href: 'https://www.facebook.com/sharer/sharer.php?u=http%3A//curiousname.ensemblr.co', target: '_blank' },
+	            React.createElement(
+	              'i',
+	              { className: 'curious-icon curious-icon-facebook' },
+	              React.createElement(
+	                'span',
+	                null,
+	                'Share'
+	              )
+	            )
+	          ),
+	          React.createElement(
+	            'a',
+	            { href: "https://twitter.com/home?status=" + encodeURIComponent(this.props.name) + "%20is%20" + encodeURIComponent(this.state.prime) + "a%20prime%20number!%20Check%20yours%20at%20Project%20Curious%20Name!%20http%3A//bit.ly/curname", target: '_blank' },
+	            React.createElement(
+	              'i',
+	              { className: 'curious-icon curious-icon-twitter' },
+	              React.createElement(
+	                'span',
+	                null,
+	                'Tweet'
+	              )
+	            )
+	          ),
+	          React.createElement(
+	            'a',
 	            { href: '/' },
-	            React.createElement('i', { className: 'curious-icon curious-icon-refresh' }),
-	            'Start Over'
+	            React.createElement(
+	              'i',
+	              { className: 'curious-icon curious-icon-refresh' },
+	              React.createElement(
+	                'span',
+	                null,
+	                'Start Over'
+	              )
+	            )
 	          )
 	        )
 	      )
