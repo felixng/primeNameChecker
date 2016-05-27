@@ -371,6 +371,15 @@
 	            'a',
 	            { href: '/' },
 	            'Project Curious Name'
+	          ),
+	          React.createElement(
+	            'a',
+	            { className: 'curious-icon curious-icon-facebook', href: "javascript:fbShare('Project Curious Name!')", target: '_blank' },
+	            React.createElement(
+	              'span',
+	              null,
+	              'Share!'
+	            )
 	          )
 	        ),
 	        React.createElement(

@@ -254,7 +254,10 @@ var NLForm = React.createClass({
     return (
       <div className="fs-form-wrap" id="fs-form-wrap">
           <div className="fs-title">
-            <h1><a href="/">Project Curious Name</a></h1>
+            <h1>
+              <a href="/">Project Curious Name</a>
+              <a className="curious-icon curious-icon-facebook" href={"javascript:fbShare('Project Curious Name!')"} target="_blank"><span>Share!</span></a>
+            </h1>
             <div className="curious-top">
               { this.state.stage != 0 ? 
                 <a className="curious-icon curious-icon-prev" onClick={this.back}><span>Back</span></a>
