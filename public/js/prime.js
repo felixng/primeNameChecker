@@ -56,7 +56,7 @@ var Result = React.createClass({
     }
   },
   render: function() {
-    var ShareText = "My%20name%20"
+    var shareText = "My%20name%20"
                        + encodeURIComponent(this.props.name)
                        + "%20is%20"
                        + encodeURIComponent(this.state.prime)

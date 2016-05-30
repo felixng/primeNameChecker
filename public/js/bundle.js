@@ -107,7 +107,7 @@
 	    }
 	  },
 	  render: function () {
-	    var ShareText = "My%20name%20" + encodeURIComponent(this.props.name) + "%20is%20" + encodeURIComponent(this.state.prime) + "a%20prime%20number:%20" + this.props.number + "!%20Check%20yours%20at%20Project%20Curious%20Name!";
+	    var shareText = "My%20name%20" + encodeURIComponent(this.props.name) + "%20is%20" + encodeURIComponent(this.state.prime) + "a%20prime%20number:%20" + this.props.number + "!%20Check%20yours%20at%20Project%20Curious%20Name!";
 	    return React.createElement(
 	      'div',
 	      { className: 'result-text' },
