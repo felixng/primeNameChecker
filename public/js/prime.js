@@ -69,7 +69,7 @@ var Result = React.createClass({
             Your name  <span className="highlight">is {this.state.prime}</span>a prime number!
             <div className="startOver">      
               <h6>
-                <a className="curious-icon curious-icon-facebook" href={"javascript:fbShare('" + shareText + "'')"} target="_blank"><span>Share!</span></a>
+                <a className="curious-icon curious-icon-facebook" href={"javascript:fbShare('" + shareText + "')"} target="_blank"><span>Share!</span></a>
                 <a className="curious-icon curious-icon-twitter" href={"javascript:tweet('" + shareText + "%20http%3A//bit.ly/curname', 520, 350)"} target="_blank"><span>Tweet</span></a>
                 <a className="curious-icon curious-icon-refresh" href="/"><span>Start Over</span></a>
               </h6>

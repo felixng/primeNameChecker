@@ -138,7 +138,7 @@
 	          null,
 	          React.createElement(
 	            'a',
-	            { className: 'curious-icon curious-icon-facebook', href: "javascript:fbShare('" + shareText + "'')", target: '_blank' },
+	            { className: 'curious-icon curious-icon-facebook', href: "javascript:fbShare('" + shareText + "')", target: '_blank' },
 	            React.createElement(
 	              'span',
 	              null,
