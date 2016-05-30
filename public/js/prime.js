@@ -256,7 +256,6 @@ var NLForm = React.createClass({
           <div className="fs-title">
             <h1>
               <a href="/">Project Curious Name</a>
-              <a className="curious-icon curious-icon-facebook" href={"javascript:fbShare('Project Curious Name!')"} target="_blank"><span>Share!</span></a>
             </h1>
             <div className="curious-top">
               { this.state.stage != 0 ? 
