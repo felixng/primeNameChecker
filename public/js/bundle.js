@@ -108,7 +108,7 @@
 	  },
 	  render: function () {
 	    var shareText = "My%20name%20" + encodeURIComponent(this.props.name) + "%20is%20" + encodeURIComponent(this.state.prime) + "a%20prime%20number:%20" + this.props.number + "!%20Check%20yours%20at%20Project%20Curious%20Name!";
-	    var tweetText = "My%20name%20" + encodeURIComponent(this.props.name) + "%20is%20" + encodeURIComponent(this.state.prime) + "a%20prime%20number%20" + this.props.number + "!%20Is%20yours%3F%20%40curiousonstage%20%40curiousbroadway%20%23curiousincident";
+	    var tweetText = "My%20name%20" + encodeURIComponent(this.props.name) + "%20is%20" + encodeURIComponent(this.state.prime) + "a%20prime%20number%20" + this.props.number + "!%20Is%20yours?%20";
 	    return React.createElement(
 	      'div',
 	      { className: 'result-text' },
@@ -148,7 +148,7 @@
 	          ),
 	          React.createElement(
 	            'a',
-	            { className: 'curious-icon curious-icon-twitter', href: "javascript:tweet('" + tweetText + "%20http%3A//bit.ly/curname', 520, 350)", target: '_blank' },
+	            { className: 'curious-icon curious-icon-twitter', href: "javascript:tweet('" + tweetText + "%40curiousonstage%20%40curiousbroadway', 520, 350)", target: '_blank' },
 	            React.createElement(
 	              'span',
 	              null,
