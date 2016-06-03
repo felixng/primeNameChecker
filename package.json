@@ -12,6 +12,7 @@
     "express": "^4.4.5",
     "mailchimp": "^1.1.6",
     "mongodb": "^2.1.18",
+    "newrelic": "^1.28.0",
     "particles.js": "^2.0.0",
     "react": "^15.0.2",
     "react-dom": "^15.0.2",
