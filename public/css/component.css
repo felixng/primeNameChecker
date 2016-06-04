@@ -304,7 +304,7 @@ input:focus::-ms-input-placeholder {
 
 .footer p.felix-ng {
 	text-align: right;
-	min-width:30%;
+	width: 100%;
     position: absolute;
 	right: 0;
 	bottom: 0;
