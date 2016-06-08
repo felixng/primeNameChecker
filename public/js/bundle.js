@@ -259,6 +259,10 @@
 	  nextStage: function () {
 	    this.setState({ error: false });
 	    this.setState({ stage: this.state.stage + 1 });
+	    if (this.state.stage == maxStage) {
+	      var slider = $('#slider').slideReveal();
+	      slider.slideReveal("toggle");
+	    }
 	  },
 	  lastStage: function () {
 	    this.setState({ stage: this.state.stage - 1 });
@@ -372,6 +376,16 @@
 	            'a',
 	            { href: '/' },
 	            'Project Curious Name'
+	          ),
+	          React.createElement(
+	            'div',
+	            { className: 'sub-title' },
+	            'by ',
+	            React.createElement(
+	              'a',
+	              { href: 'http://ensemblr.co/?utm_source=curious-name&utm_medium=title-link&utm_campaign=landing-page', target: '_blank' },
+	              'ensemblr.co'
+	            )
 	          )
 	        ),
 	        React.createElement(

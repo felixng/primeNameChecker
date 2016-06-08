@@ -300,6 +300,7 @@ input:focus::-ms-input-placeholder {
 	opacity: 0.75;
 	font-weight: 600;
 	width: 55%;
+	z-index:100;
 }
 
 .footer p.felix-ng {

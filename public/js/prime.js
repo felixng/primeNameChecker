@@ -152,6 +152,11 @@ var NLForm = React.createClass({
   nextStage: function() {
     this.setState({error: false});
     this.setState({ stage: this.state.stage + 1 });
+    if (this.state.stage == maxStage)
+    {
+      var slider = $('#slider').slideReveal();
+      slider.slideReveal("toggle");
+    }
   },
   lastStage: function() {
     this.setState({ stage: this.state.stage - 1 });
@@ -263,7 +268,9 @@ var NLForm = React.createClass({
           <div className="fs-title">
             <h1>
               <a href="/">Project Curious Name</a>
+              <div className="sub-title">by <a href="http://ensemblr.co/?utm_source=curious-name&utm_medium=title-link&utm_campaign=landing-page" target="_blank">ensemblr.co</a></div>
             </h1>
+
             <div className="curious-top">
               { this.state.stage != 0 ? 
                 <a className="curious-icon curious-icon-prev" onClick={this.back}><span>Back</span></a>

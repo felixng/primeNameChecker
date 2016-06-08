@@ -54,6 +54,7 @@ a:hover, a:active {
 	margin: 0;
 	padding: 2.25em;
 	width: 100%;
+	z-index: 1000;
 }
 
 .fs-title h1 {
@@ -207,5 +208,34 @@ div.errorMessage{
 	cursor: pointer;
 }
 
+div.handle {
+	background-color: #2E2E2E;
+	left: -40px;
+	padding: 10px;8px;
+	position: absolute;
+	top: 0px;
+	width: 20px;
+	cursor: pointer;
+	z-index:1000;
+}
 
+#slider{
+	background-color: #333333;
+}
 
+h1 div.sub-title{
+	display: block;
+	margin-top: 0.25em;
+	font-size: 0.5em;
+	color: rgba(255, 255, 255, 0.5);
+}
+
+div.sub-title a {
+	color: rgba(0, 0, 0, 0.3);
+	font-weight: 700;
+	z-index: 100;
+}
+
+div.sub-title a:hover {
+	color: rgba(0, 0, 0, 0.2);
+}
