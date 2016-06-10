@@ -88,7 +88,7 @@
 	    return React.createElement(
 	      'div',
 	      { className: 'errorMessage' },
-	      'I cannot perform the calculation without your name.'
+	      'I don\'t talk to strangers...'
 	    );
 	  }
 	});
@@ -306,7 +306,7 @@
 	    var name = this.refs['name'].getInputValue();
 	    var location = this.refs['location'].getInputValue();
 	    var email = this.refs['email'].getInputValue();
-	    if (name != '') {
+	    if (name != '' && location != '' && email != '') {
 	      var resultNumber = this.calcNumber(name.replace(' ', ''));
 
 	      this.setState({ name: name });
@@ -466,6 +466,11 @@
 	                  { className: 'nl-submit', type: 'submit', onClick: this.handleSubmit },
 	                  'Is my name a Prime Number?'
 	                )
+	              ),
+	              React.createElement(
+	                'div',
+	                { className: 'disclaimer' },
+	                '*We hate spam. We will use your e-mail address solely to provide information and updates about Curious Name and Ensemblr.co'
 	              ),
 	              React.createElement('div', { className: 'nl-overlay', onClick: this.closeOverlay })
 	            )

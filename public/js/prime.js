@@ -37,7 +37,7 @@ var Error = React.createClass({
   render: function() {
     return (
         <div className="errorMessage">
-            I cannot perform the calculation without your name.
+            I don't talk to strangers...
         </div>
     );
   }
@@ -201,7 +201,7 @@ var NLForm = React.createClass({
     var name = this.refs['name'].getInputValue();
     var location = this.refs['location'].getInputValue();
     var email = this.refs['email'].getInputValue();
-    if (name != '')
+    if (name != '' && location != '' && email != '')
     {
       var resultNumber = this.calcNumber(name.replace(' ', ''));
       
@@ -318,10 +318,10 @@ var NLForm = React.createClass({
                                                  onUpdate={this.handleChange}  
                                                  displayText='detective@boone.com' 
                                                  exampleText='Christopher Boone'/>
-                      
                       <div className="nl-submit-wrap">
                         <button className="nl-submit" type="submit" onClick={this.handleSubmit}>Is my name a Prime Number?</button>
                       </div>
+                      <div className="disclaimer">*We hate spam. We will use your e-mail address solely to provide information and updates about Curious Name and Ensemblr.co</div>
                       <div className="nl-overlay" onClick={this.closeOverlay}></div>
                     </div>
                   </ReactCSSTransitionGroup>
