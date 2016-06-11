@@ -70,6 +70,16 @@ var Result = React.createClass({
                        + "a%20prime%20number%20"
                        + this.props.number
                        + "!%20Is%20yours?%20";
+    var London = Math.ceil(Math.random() * 10) % 2;
+    var mentionHandle = '';
+    if (London == 1){
+      mentionHandle = '%20%40curiousonstage%20';
+    }
+    else{
+      mentionHandle = '%20%40curiousbroadway%20';
+    }
+
+
     return (
         <div className="result-text">
             <span className="highlight">{this.props.name}</span> equals to: <div className="result-number">{this.props.number}</div> 
@@ -77,7 +87,7 @@ var Result = React.createClass({
             <div className="startOver">      
               <h6>
                 <a className="curious-icon curious-icon-facebook" href={"javascript:fbShare('" + shareText + "')"} target="_blank"><span>Share!</span></a>
-                <a className="curious-icon curious-icon-twitter" href={"javascript:tweet('" + tweetText + "%40curiousonstage%20%40curiousbroadway', 520, 350)"} target="_blank"><span>Tweet</span></a>
+                <a className="curious-icon curious-icon-twitter" href={"javascript:tweet('" + tweetText + mentionHandle + "via @ensemblrapp' + , 520, 350)"} target="_blank"><span>Tweet</span></a>
                 <a className="curious-icon curious-icon-refresh" href="/"><span>Start Over</span></a>
               </h6>
             </div>

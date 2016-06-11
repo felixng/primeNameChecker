@@ -109,6 +109,14 @@
 	  render: function () {
 	    var shareText = "My%20name%20" + encodeURIComponent(this.props.name) + "%20is%20" + encodeURIComponent(this.state.prime) + "a%20prime%20number:%20" + this.props.number + "!%20Check%20yours%20at%20Project%20Curious%20Name!";
 	    var tweetText = "My%20name%20" + encodeURIComponent(this.props.name) + "%20is%20" + encodeURIComponent(this.state.prime) + "a%20prime%20number%20" + this.props.number + "!%20Is%20yours?%20";
+	    var London = Math.ceil(Math.random() * 10) % 2;
+	    var mentionHandle = '';
+	    if (London == 1) {
+	      mentionHandle = '%20%40curiousonstage%20';
+	    } else {
+	      mentionHandle = '%20%40curiousbroadway%20';
+	    }
+
 	    return React.createElement(
 	      'div',
 	      { className: 'result-text' },
@@ -148,7 +156,7 @@
 	          ),
 	          React.createElement(
 	            'a',
-	            { className: 'curious-icon curious-icon-twitter', href: "javascript:tweet('" + tweetText + "%40curiousonstage%20%40curiousbroadway', 520, 350)", target: '_blank' },
+	            { className: 'curious-icon curious-icon-twitter', href: "javascript:tweet('" + tweetText + mentionHandle + "via @ensemblrapp' + , 520, 350)", target: '_blank' },
 	            React.createElement(
 	              'span',
 	              null,
