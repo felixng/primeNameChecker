@@ -37,7 +37,7 @@ var Error = React.createClass({
   render: function() {
     return (
         <div className="errorMessage">
-            I don't talk to strangers...
+            I dont talk to strangers...
         </div>
     );
   }
@@ -73,10 +73,10 @@ var Result = React.createClass({
     var London = Math.ceil(Math.random() * 10) % 2;
     var mentionHandle = '';
     if (London == 1){
-      mentionHandle = '%20%40curiousonstage%20';
+      mentionHandle = '%40curiousonstage%20via%20@ensemblrapp';
     }
     else{
-      mentionHandle = '%20%40curiousbroadway%20';
+      mentionHandle = '%40curiousbroadway%20via%20@ensemblrapp';
     }
 
 
@@ -87,7 +87,7 @@ var Result = React.createClass({
             <div className="startOver">      
               <h6>
                 <a className="curious-icon curious-icon-facebook" href={"javascript:fbShare('" + shareText + "')"} target="_blank"><span>Share!</span></a>
-                <a className="curious-icon curious-icon-twitter" href={"javascript:tweet('" + tweetText + mentionHandle + "via @ensemblrapp' + , 520, 350)"} target="_blank"><span>Tweet</span></a>
+                <a className="curious-icon curious-icon-twitter" href={"javascript:tweet('" + tweetText + mentionHandle +"', 520, 350)"} target="_blank"><span>Tweet</span></a>
                 <a className="curious-icon curious-icon-refresh" href="/"><span>Start Over</span></a>
               </h6>
             </div>

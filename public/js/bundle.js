@@ -88,7 +88,7 @@
 	    return React.createElement(
 	      'div',
 	      { className: 'errorMessage' },
-	      'I don\'t talk to strangers...'
+	      'I dont talk to strangers...'
 	    );
 	  }
 	});
@@ -112,9 +112,9 @@
 	    var London = Math.ceil(Math.random() * 10) % 2;
 	    var mentionHandle = '';
 	    if (London == 1) {
-	      mentionHandle = '%20%40curiousonstage%20';
+	      mentionHandle = '%40curiousonstage%20via%20@ensemblrapp';
 	    } else {
-	      mentionHandle = '%20%40curiousbroadway%20';
+	      mentionHandle = '%40curiousbroadway%20via%20@ensemblrapp';
 	    }
 
 	    return React.createElement(
@@ -156,7 +156,7 @@
 	          ),
 	          React.createElement(
 	            'a',
-	            { className: 'curious-icon curious-icon-twitter', href: "javascript:tweet('" + tweetText + mentionHandle + "via @ensemblrapp' + , 520, 350)", target: '_blank' },
+	            { className: 'curious-icon curious-icon-twitter', href: "javascript:tweet('" + tweetText + mentionHandle + "', 520, 350)", target: '_blank' },
 	            React.createElement(
 	              'span',
 	              null,
