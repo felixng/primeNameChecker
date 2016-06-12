@@ -123,11 +123,11 @@
 	color: #478982;
 }
 
-.no-touch .nl-dd ul li:hover {
+.no-touchevents .nl-dd ul li:hover {
 	background: rgba(0,0,0,0.05);
 }
 
-.no-touch .nl-dd ul li:hover:active {
+.no-touchevents .nl-dd ul li:hover:active {
 	color: #478982;
 }
 
@@ -254,12 +254,12 @@ input:focus::-ms-input-placeholder {
 	background: rgba(242,213,0, 0.7);
 }
 
-.no-touch .nl-form .nl-submit:hover,
-.no-touch .nl-form .nl-submit:active {
+.no-touchevents .nl-form .nl-submit:hover,
+.no-touchevents .nl-form .nl-submit:active {
 	background: rgba(242,213,0, 0.7);
 }
 
-.no-touch .nl-form .nl-submit:hover:before {
+.no-touchevents .nl-form .nl-submit:hover:before {
 	background: rgba(242,213,0, 0.7);
 }
 

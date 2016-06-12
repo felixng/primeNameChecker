@@ -42,7 +42,7 @@ a {
 	outline: none;
 }
 
-a:hover, a:active {
+.no-touchevents a:hover, a:active {
 	color: rgba(242,213,0, 0.7);
 }
 
@@ -152,7 +152,7 @@ div.errorMessage{
 	font-weight: 700;
 }
 
-.curious-icon:hover span {
+.no-touchevents .curious-icon:hover span {
 	display: block;
 	color: #6a7b7e;
 }
@@ -244,7 +244,7 @@ div.sub-title a {
 	z-index: 100;
 }
 
-div.sub-title a:hover {
+.no-touchevents div.sub-title a:hover {
 	color: rgba(0, 0, 0, 0.2);
 }
 
