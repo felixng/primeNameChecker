@@ -178,6 +178,7 @@ var NLForm = React.createClass({
     }
   },
   lastStage: function() {
+    this.setState({error: false});
     this.setState({ stage: this.state.stage - 1 });
   },
   closeOverlay: function(e) {
@@ -266,7 +267,6 @@ var NLForm = React.createClass({
   },
   back: function(e){
     e.preventDefault(); e.stopPropagation(); 
-
     clearTimeout(timer);
     if (this.state.stage == 1 || this.state.stage == 2){
       timer = setTimeout(this.next, 10000);
