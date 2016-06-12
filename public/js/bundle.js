@@ -52,6 +52,11 @@
 	var maxPrime = 7507;
 	var primeNumbers;
 
+	function validateEmail(email) {
+	  var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+	  return re.test(email);
+	}
+
 	particlesJS.load('container', 'particles.json', function () {
 	  //console.log('callback - particles.js config loaded');
 	});
@@ -317,11 +322,14 @@
 	    var name = this.refs['name'].getInputValue();
 	    var location = this.refs['location'].getInputValue();
 	    var email = this.refs['email'].getInputValue();
+
 	    if (name != '' && location != '' && email != '') {
 	      var resultNumber = this.calcNumber(name.split(' ').join(''));
 
 	      if (resultNumber > maxPrime) {
 	        this.setState({ error: true, errorMessage: 'I only know every prime number up to 7,507...' });
+	      } else if (!validateEmail(email)) {
+	        this.setState({ error: true, errorMessage: 'That is not an email...' });
 	      } else {
 	        this.setState({ name: name });
 	        if (resultNumber != undefined && $.inArray(resultNumber, primeNumbers) > -1) {
