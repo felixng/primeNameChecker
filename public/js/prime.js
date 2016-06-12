@@ -69,7 +69,7 @@ var Result = React.createClass({
                        + encodeURIComponent(this.props.name)
                        + "%20is%20"
                        + encodeURIComponent(this.state.prime)
-                       + "a%20prime%20number%20"
+                       + "a%20prime%20number:%20"
                        + this.props.number
                        + "!%20Is%20yours?%20";
     var London = Math.ceil(Math.random() * 10) % 2;
@@ -301,7 +301,7 @@ var NLForm = React.createClass({
               { this.state.stage == 0 ? 
                   <ReactCSSTransitionGroup transitionName="fade" transitionAppear={true} transitionAppearTimeout={500} transitionEnterTimeout={500} transitionLeaveTimeout={500}>
                     <Intro
-                      text="Hello, my name is Christopher John Francis Boone. I am a 15-year-old boy from Swindon, England. And I like Prime Numbers." /> 
+                      text="Hello, my name is Christopher John Francis Boone. I know all the countries of the world and their capital cities and every prime number up to 7,507" /> 
                   </ReactCSSTransitionGroup>
                   : null }
               { this.state.stage == 1 ? 

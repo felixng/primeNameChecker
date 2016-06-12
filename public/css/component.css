@@ -26,7 +26,7 @@
 .nl-form {
 	width: 100%;
     margin: 2em auto 0 auto;
-    font-size: 3.5em;
+    font-size: 3.25em;
     line-height: 1.25;
     font-weight: 600;
 }
@@ -325,7 +325,6 @@ input:focus::-ms-input-placeholder {
 	.nl-form {
 		font-size: 3em;
 	}
-
 }
 
 @media screen and (max-width: 25em) {
