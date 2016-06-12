@@ -49,6 +49,7 @@
 	var ReactDOM = __webpack_require__(34);
 	var ReactCSSTransitionGroup = __webpack_require__(169);
 	var maxStage = 3;
+	var maxPrime = 7507;
 	var primeNumbers;
 
 	particlesJS.load('container', 'particles.json', function () {
@@ -90,7 +91,7 @@
 	    return React.createElement(
 	      'div',
 	      { className: 'errorMessage' },
-	      'I do not talk to strangers...'
+	      this.props.text
 	    );
 	  }
 	});
@@ -260,7 +261,7 @@
 	  displayName: 'NLForm',
 
 	  getInitialState: function () {
-	    return { open: false, stage: 0, isPrime: false, number: 0, name: '' };
+	    return { open: false, stage: 0, isPrime: false, number: 0, name: '', errorMessage: '' };
 	  },
 	  componentDidMount: function () {
 	    window.addEventListener('keyup', this.keyDown);
@@ -319,17 +320,21 @@
 	    if (name != '' && location != '' && email != '') {
 	      var resultNumber = this.calcNumber(name.split(' ').join(''));
 
-	      this.setState({ name: name });
-	      if (resultNumber != undefined && $.inArray(resultNumber, primeNumbers) > -1) {
-	        this.setState({ isPrime: true, number: resultNumber });
+	      if (resultNumber > maxPrime) {
+	        this.setState({ error: true, errorMessage: 'I only know every prime number up to 7,507...' });
 	      } else {
-	        this.setState({ isPrime: false, number: resultNumber });
-	      }
+	        this.setState({ name: name });
+	        if (resultNumber != undefined && $.inArray(resultNumber, primeNumbers) > -1) {
+	          this.setState({ isPrime: true, number: resultNumber });
+	        } else {
+	          this.setState({ isPrime: false, number: resultNumber });
+	        }
 
-	      this.subscribe({ name: name, location: location, email: email, date: Date.now(), readable_date: new Date() });
-	      this.nextStage();
+	        this.subscribe({ name: name, location: location, email: email, date: Date.now(), readable_date: new Date() });
+	        this.nextStage();
+	      }
 	    } else {
-	      this.setState({ error: true });
+	      this.setState({ error: true, errorMessage: 'I do not talk to strangers' });
 	    }
 	  },
 	  next: function (e) {
@@ -445,7 +450,7 @@
 	          this.state.error ? React.createElement(
 	            ReactCSSTransitionGroup,
 	            { transitionName: 'fade', transitionAppear: true, transitionAppearTimeout: 500, transitionEnterTimeout: 500, transitionLeaveTimeout: 500 },
-	            React.createElement(Error, null)
+	            React.createElement(Error, { text: this.state.errorMessage })
 	          ) : null,
 	          this.state.stage == 2 ? React.createElement(
 	            ReactCSSTransitionGroup,
