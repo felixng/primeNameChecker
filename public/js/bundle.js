@@ -49,8 +49,10 @@
 	var ReactDOM = __webpack_require__(34);
 	var ReactCSSTransitionGroup = __webpack_require__(169);
 	var maxStage = 3;
+	var primeNumbers;
+
 	particlesJS.load('container', 'particles.json', function () {
-	  console.log('callback - particles.js config loaded');
+	  //console.log('callback - particles.js config loaded');
 	});
 
 	var timer;
@@ -88,7 +90,7 @@
 	    return React.createElement(
 	      'div',
 	      { className: 'errorMessage' },
-	      'I dont talk to strangers...'
+	      'I do not talk to strangers...'
 	    );
 	  }
 	});
@@ -315,10 +317,10 @@
 	    var location = this.refs['location'].getInputValue();
 	    var email = this.refs['email'].getInputValue();
 	    if (name != '' && location != '' && email != '') {
-	      var resultNumber = this.calcNumber(name.replace(' ', ''));
+	      var resultNumber = this.calcNumber(name.split(' ').join(''));
 
 	      this.setState({ name: name });
-	      if (resultNumber != undefined && resultNumber % 2 !== 0) {
+	      if (resultNumber != undefined && $.inArray(resultNumber, primeNumbers) > -1) {
 	        this.setState({ isPrime: true, number: resultNumber });
 	      } else {
 	        this.setState({ isPrime: false, number: resultNumber });
@@ -361,8 +363,11 @@
 	    this.setState({ open: val });
 	  },
 	  calcNumber: function (name) {
+	    // console.log(name);
 	    if (name.length > 0) {
 	      var num = name.trim().toLowerCase().split('').map(function (char) {
+	        // console.log(char + ":");
+	        // console.log(char.charCodeAt(0) - 96);
 	        return char.charCodeAt(0) - 96;
 	      }).reduce(function (current, previous) {
 	        return previous + current;

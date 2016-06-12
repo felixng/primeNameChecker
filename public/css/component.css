@@ -135,7 +135,7 @@
 .nl-dd ul li.nl-dd-checked:before,
 .nl-submit:before,
 .nl-field-go:before {
-	font-family: 'nlicons';
+	font-family: 'icomoon';
 	speak: none;
 	font-style: normal;
 	font-weight: normal;
@@ -246,7 +246,7 @@ input:focus::-ms-input-placeholder {
 }
 
 .nl-submit:before {
-	content: "\e001";
+	content: "\e913";
 	color: #fff;
 	float: left;
 	padding: 0 0.7em;

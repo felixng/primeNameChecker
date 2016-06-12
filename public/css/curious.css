@@ -175,6 +175,14 @@ div.errorMessage{
     content: "\e910";
 }
 
+.curious-icon-pointer-black:before {
+    content: "\e913";
+}
+
+.curious-icon-pointer:before {
+    content: "\e914";
+}
+
 .curious-icon-twitter:before {
     content: "\e90d";
 }
