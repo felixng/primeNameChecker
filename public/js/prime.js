@@ -309,7 +309,7 @@ var NLForm = React.createClass({
                 : null }
               { this.state.stage == 0 || this.state.stage == 1 ? 
                 <a className="curious-icon curious-icon-next" onClick={this.next}><span>Next</span></a>
-                : null }
+                : <a className="curious-icon curious-icon-next hidden" onClick={this.next}><span>Next</span></a> }
             </div>
           </div>
 

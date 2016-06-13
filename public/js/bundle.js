@@ -434,7 +434,15 @@
 	              null,
 	              'Next'
 	            )
-	          ) : null
+	          ) : React.createElement(
+	            'a',
+	            { className: 'curious-icon curious-icon-next hidden', onClick: this.next },
+	            React.createElement(
+	              'span',
+	              null,
+	              'Next'
+	            )
+	          )
 	        )
 	      ),
 	      React.createElement(

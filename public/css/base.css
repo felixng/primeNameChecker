@@ -12,6 +12,9 @@ body, .noselect {
                                   not supported by any browser */
 }
 
+.hidden, .hidden:before, .hidden:after{
+  visibility: hidden;
+}
 
 .fade-enter {
   opacity: 0.01;
