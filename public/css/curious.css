@@ -244,6 +244,10 @@ div.sub-title a {
 	z-index: 100;
 }
 
+div.sub-title .curious-icon{
+	font-size: 0.75em;
+}
+
 .no-touchevents div.sub-title a:hover {
 	color: rgba(0, 0, 0, 0.2);
 }

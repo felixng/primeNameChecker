@@ -411,7 +411,9 @@
 	              'a',
 	              { href: 'http://ensemblr.co/?utm_source=curious-name&utm_medium=title-link&utm_campaign=landing-page', target: '_blank' },
 	              'ensemblr.co'
-	            )
+	            ),
+	            React.createElement('a', { className: 'curious-icon curious-icon-facebook', href: 'https://www.facebook.com/ensemblrapp?ls=curiousname', target: '_blank' }),
+	            React.createElement('a', { className: 'curious-icon curious-icon-twitter', href: 'https://www.twitter.com/ensemblrapp?ls=curiousname', target: '_blank' })
 	          )
 	        ),
 	        React.createElement(

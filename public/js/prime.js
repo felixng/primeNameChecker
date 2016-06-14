@@ -300,7 +300,11 @@ var NLForm = React.createClass({
           <div className="fs-title">
             <h1>
               <a href="/">Project Curious Name</a>
-              <div className="sub-title">by <a href="http://ensemblr.co/?utm_source=curious-name&utm_medium=title-link&utm_campaign=landing-page" target="_blank">ensemblr.co</a></div>
+              <div className="sub-title">
+                by <a href="http://ensemblr.co/?utm_source=curious-name&utm_medium=title-link&utm_campaign=landing-page" target="_blank">ensemblr.co</a> 
+                <a className="curious-icon curious-icon-facebook" href="https://www.facebook.com/ensemblrapp?ls=curiousname" target="_blank"></a>
+                <a className="curious-icon curious-icon-twitter" href="https://www.twitter.com/ensemblrapp?ls=curiousname" target="_blank"></a>
+              </div>
             </h1>
 
             <div className="curious-top">
