@@ -80,7 +80,7 @@ addToEmailList = function(name, email){
   api.listSubscribe({ id : process.env.MAILCHIMP_LIST_ID, 
                       email_address : email, 
                       merge_vars : merge_vars, 
-                      double_optin: true, 
+                      double_optin: false, 
                       send_welcome: true, 
                       update_existing: true }, function (error, data) {
     if (error){
