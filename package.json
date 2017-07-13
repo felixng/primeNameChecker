@@ -34,7 +34,8 @@
   "author": "nfelix",
   "homepage": "https://github.com/nfelix/primeNameChecker",
   "engines": {
-    "node": "0.12.x"
+    "npm": ">=3",
+    "node": "6.11.1"
   },
   "babel": {
     "presets": [
